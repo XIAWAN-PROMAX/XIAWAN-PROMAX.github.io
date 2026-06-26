@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>瞎玩的主页</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Helvetica Neue", system-ui, sans-serif;
+            background: #f5f5f7;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .container {
+            max-width: 560px;
+            width: 100%;
+            transition: max-width 0.3s;
+        }
+
+        /* ===== 页面切换 ===== */
+        .page {
+            display: none;
+            animation: pageIn 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageIn {
+            0% {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== 返回按钮（液态玻璃） ===== */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 30px;
+            font-size: 14px;
+            color: #1c1c1e;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            margin-bottom: 16px;
+            border: none;
+        }
+        .back-btn:active {
+            transform: scale(0.96);
+        }
+        @media (hover: hover) {
+            .back-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        /* ===== 主页 ===== */
+        .header h1 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #1c1c1e;
+            margin-bottom: 32px;
+        }
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* ===== 液态玻璃卡片 ===== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 20px;
+            padding: 18px 22px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+            transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
+                box-shadow 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 10%, rgba(255, 255, 255, 0.35) 0%, transparent 60%);
+            pointer-events: none;
+            transition: transform 0.6s ease;
+        }
+
+        @media (hover: hover) {
+            .glass-card:hover::before {
+                transform: translate(5%, -5%);
+            }
+        }
+
+        .glass-card:active {
+            transform: scale(0.97);
+        }
+        @media (hover: hover) {
+            .glass-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                    inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        .card-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 500;
+            background: rgba(0, 0, 0, 0.04);
+            color: #1c1c1e;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .card-text {
+            font-size: 17px;
+            font-weight: 450;
+            color: #1c1c1e;
+        }
+        .card-arrow {
+            margin-left: auto;
+            color: #c0c0c6;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        .glass-card:hover .card-arrow {
+            transform: translateX(4px);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 12px;
+            color: #b8b8be;
+            letter-spacing: 0.5px;
+        }
+        .footer span {
+            color: #c97d2b;
+        }
+
+        /* ===== 麦地版小管家V2（液态玻璃容器） ===== */
+        .page-md3 {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-md3::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -40%;
+            width: 180%;
+            height: 180%;
+            background: radial-gradient(ellipse at 20% 10%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .page-md3 h1 {
+            font-size: 30px;
+            font-weight: 600;
+            color: #1c1c1e;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .page-md3 .sub {
+            text-align: center;
+            color: #8e8e93;
+            font-size: 15px;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            padding: 16px 20px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: background 0.3s ease, transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        @media (hover: hover) {
+            .feature:hover {
+                background: rgba(255, 255, 255, 0.45);
+                transform: translateX(4px);
+            }
+        }
+        .feature h3 {
+            font-size: 17px;
+            color: #1c1c1e;
+            font-weight: 500;
+        }
+        .feature p {
+            font-size: 14px;
+            color: #8e8e93;
+            margin-top: 4px;
+        }
+        .download-area {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            position: relative;
+            z-index: 1;
+        }
+        .download-area h2 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1c1c1e;
+        }
+        .download-area p {
+            font-size: 14px;
+            color: #8e8e93;
+            margin: 6px 0 16px;
+        }
+        .download-btn {
+            display: inline-block;
+            padding: 14px 48px;
+            background: rgba(28, 28, 30, 0.9);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 16px rgba(28, 28, 30, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .download-btn:active {
+            transform: scale(0.96);
+        }
+        @media (hover: hover) {
+            .download-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 28px rgba(28, 28, 30, 0.2);
+            }
+        }
+        .footer-md3 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #b8b8be;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== 核电站模拟器 - 纯黑色工业风格 ===== */
+        .page-hedian {
+            background: #000000 !important;
+            border: none !important;
+            border-radius: 12px;
+            padding: 12px 10px;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        .page-hedian::before {
+            display: none !important;
+        }
+
+        /* 内部reactor-wrap */
+        .page-hedian .reactor-wrap {
+            background: #050505;
+            color: #e0e0e0;
+            font-family: "Consolas", "Microsoft Yahei", monospace;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .page-hedian .reactor-wrap .grid-panel {
+            background: #111;
+            border: 1px solid #3a3a3a;
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 12px;
+        }
+
+        .page-hedian .reactor-wrap .grid-panel h3 {
+            color: #4fc3f7;
+            font-size: 15px;
+            margin: 10px 0 6px;
+        }
+
+        .page-hedian .reactor-wrap .data-row {
+            font-size: 14px;
+            margin: 6px 0;
+            display: flex;
+            justify-content: space-between;
+            color: #ccc;
+        }
+
+        .page-hedian .reactor-wrap .data-row .normal {
+            color: #66bb6a;
+        }
+        .page-hedian .reactor-wrap .data-row .warn {
+            color: #ffa726;
+        }
+        .page-hedian .reactor-wrap .data-row .alert {
+            color: #ef5350;
+            animation: blink 0.35s infinite alternate;
+        }
+        .page-hedian .reactor-wrap .data-row .crit {
+            color: #ff1744;
+            animation: blink 0.2s infinite alternate;
+            font-weight: bold;
+        }
+
+        @keyframes blink {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0.25;
+            }
+        }
+
+        .page-hedian .reactor-wrap .ctrl-group {
+            margin-bottom: 14px;
+        }
+        .page-hedian .reactor-wrap .ctrl-group h3 {
+            color: #4fc3f7;
+            font-size: 15px;
+            margin: 10px 0 6px;
+        }
+        .page-hedian .reactor-wrap .ctrl-item {
+            margin: 8px 0;
+        }
+        .page-hedian .reactor-wrap .ctrl-item label {
+            display: block;
+            margin-bottom: 4px;
+            color: #aaa;
+            font-size: 13px;
+        }
+        .page-hedian .reactor-wrap input[type="range"] {
+            width: 100%;
+            accent-color: #ff7722;
+            cursor: pointer;
+            background: #222;
+            height: 4px;
+            border-radius: 2px;
+        }
+        .page-hedian .reactor-wrap .val {
+            color: #81d4fa;
+            margin-left: 6px;
+        }
+        .page-hedian .reactor-wrap .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+        .page-hedian .reactor-wrap .btn-off {
+            background: #333;
+            color: #fff;
+        }
+        .page-hedian .reactor-wrap .btn-on {
+            background: #2e7d32;
+            color: #fff;
+        }
+        .page-hedian .reactor-wrap .btn-danger {
+            background: #b71c1c;
+            color: #fff;
+            width: 100%;
+            padding: 10px;
+            font-size: 15px;
+            margin-top: 8px;
+        }
+        .page-hedian .reactor-wrap .btn-warn {
+            background: #f57c00;
+            color: #fff;
+        }
+        .page-hedian .reactor-wrap .btn-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .page-hedian .reactor-wrap .disabled {
+            opacity: 0.35;
+            pointer-events: none;
+            filter: grayscale(1);
+        }
+        .page-hedian .reactor-wrap .state-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            background: #555;
+        }
+        .page-hedian .reactor-wrap .state-run {
+            background: #4caf50;
+            box-shadow: 0 0 6px #4caf50;
+        }
+        .page-hedian .reactor-wrap .state-stop {
+            background: #666;
+        }
+        .page-hedian .reactor-wrap h2 {
+            color: #ff8420;
+            font-size: 18px;
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+        }
+        .page-hedian .reactor-wrap .log-box {
+            margin-top: 10px;
+            padding: 8px;
+            border: 1px solid #333;
+            height: 100px;
+            overflow-y: auto;
+            font-size: 12px;
+            background: #0a0a0a;
+            border-radius: 4px;
+            color: #bbb;
+        }
+        .page-hedian .reactor-wrap .log-item {
+            margin: 2px 0;
+            color: #bbb;
+        }
+        .page-hedian .reactor-wrap .explode-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(180, 0, 0, 0.92);
+            z-index: 999;
+            text-align: center;
+            padding-top: 180px;
+        }
+        .page-hedian .reactor-wrap .explode-overlay h1 {
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .page-hedian .reactor-wrap .explode-overlay p {
+            font-size: 20px;
+            color: #ffe0b2;
+        }
+        .page-hedian .reactor-wrap .voice-btn-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .page-hedian .reactor-wrap .btn-voice {
+            background: #673ab7;
+            color: #fff;
+        }
+        .page-hedian .reactor-wrap .btn-voice-off {
+            background: #555;
+            color: #aaa;
+        }
+        .page-hedian .reactor-wrap .btn-lang {
+            background: #00838f;
+            color: #fff;
+        }
+        .page-hedian .reactor-wrap .voice-status {
+            font-size: 12px;
+            color: #888;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .page-hedian .reactor-wrap .voice-panel {
+            margin-top: 12px;
+            padding: 10px;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+        }
+
+        /* 核电站模拟器内部grid布局优化 */
+        .page-hedian .reactor-wrap .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        /* ===== 横屏适配 ===== */
+        @media (orientation: landscape) and (max-height: 500px) {
+            /* 手机横屏时调整容器宽度，充分利用宽度 */
+            .container {
+                max-width: 95vw;
+                padding: 0 4px;
+            }
+
+            /* 主页卡片在横屏下可横向排列 */
+            .card-grid {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .glass-card {
+                flex: 1 1 180px;
+                min-width: 140px;
+            }
+
+            /* 小管家横屏适配 */
+            .page-md3 {
+                padding: 20px 16px;
+            }
+            .page-md3 h1 {
+                font-size: 24px;
+            }
+            .feature {
+                padding: 12px 14px;
+            }
+            .download-btn {
+                padding: 10px 28px;
+                font-size: 15px;
+            }
+
+            /* 核电站模拟器横屏：让grid-2col充分发挥 */
+            .page-hedian .reactor-wrap .grid-2col {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .page-hedian .reactor-wrap {
+                padding: 6px;
+            }
+            .page-hedian .reactor-wrap .log-box {
+                height: 80px;
+            }
+            .page-hedian .reactor-wrap h2 {
+                font-size: 16px;
+            }
+
+            /* 返回按钮横屏缩小 */
+            .back-btn {
+                padding: 6px 14px;
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* 对于平板或更大屏幕横屏，进一步放大 */
+        @media (orientation: landscape) and (min-width: 800px) {
+            .container {
+                max-width: 90vw;
+            }
+            .card-grid {
+                flex-direction: row;
+                justify-content: center;
+            }
+            .glass-card {
+                flex: 0 1 240px;
+            }
+            .page-hedian .reactor-wrap .grid-2col {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* 小屏手机竖屏保持原样 */
+        @media (max-width: 480px) {
+            .page-md3 {
+                padding: 20px 16px;
+            }
+            .page-md3 h1 {
+                font-size: 24px;
+            }
+            .feature {
+                padding: 12px 14px;
+            }
+            .download-btn {
+                padding: 12px 28px;
+                font-size: 15px;
+            }
+            .page-hedian {
+                padding: 6px 4px;
+            }
+            .page-hedian .reactor-wrap .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== 主页 ===== -->
+        <div id="page-home" class="page active">
+            <div class="header">
+                <h1>瞎玩的主页</h1>
+            </div>
+            <div class="card-grid">
+                <div class="glass-card" onclick="showPage('md3')">
+                    <div class="card-content">
+                        <div class="icon-box">改</div>
+                        <span class="card-text">麦地版小管家V2</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </div>
+                <div class="glass-card" onclick="showPage('hedian')">
+                    <div class="card-content">
+                        <div class="icon-box">核</div>
+                        <span class="card-text">核电站模拟器</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                由 <span>无隐创新</span> 提供技术支持
+            </div>
+        </div>
+
+        <!-- ===== 麦地版小管家V2 ===== -->
+        <div id="page-md3" class="page page-md3">
+            <button class="back-btn" onclick="showPage('home')">← 返回</button>
+            <h1>定制版小管家</h1>
+            <p class="sub">专为极致体验打造 · 个人定制版</p>
+            <div class="feature">
+                <h3>🎨 1. 更改图标</h3>
+                <p>更个性、更显眼的视觉标识。</p>
+            </div>
+            <div class="feature">
+                <h3>💬 2. 更改提示语</h3>
+                <p>使用体验更贴合你的习惯。</p>
+            </div>
+            <div class="feature">
+                <h3>🔑 3. 更改应用签名</h3>
+                <p>独立的签名版本，可与官方版共存。</p>
+            </div>
+            <div class="feature">
+                <h3>⚡ 4. 原生服务器运行</h3>
+                <p>除微信登录外，所有功能均可正常使用。</p>
+            </div>
+            <div class="feature">
+                <h3>📅 5. 活跃更新</h3>
+                <p>每周更新一次，及时优化体验。</p>
+            </div>
+            <div class="download-area">
+                <h2>立即下载</h2>
+                <p>无需微信登录，点此直接下载 APK</p>
+                <a href="https://qfile.qq.com/q/jEK0ts9wAg" class="download-btn" target="_blank">📲 点击下载</a>
+            </div>
+            <div class="footer-md3">© 2026 定制版小管家 · CC BY-NC-SA 4.0</div>
+        </div>
+
+        <!-- ===== 核电站模拟器（纯黑工业风） ===== -->
+        <div id="page-hedian" class="page page-hedian">
+            <button class="back-btn" onclick="showPage('home')">← 返回</button>
+            <div class="reactor-wrap">
+
+                <!-- 爆炸遮罩 -->
+                <div class="explode-overlay" id="boomOverlay">
+                    <h1>堆芯蒸汽爆炸！</h1>
+                    <p>反应堆压力容器破裂，石墨慢化剂裸露燃烧<br>一回路完全损毁，所有控制系统失效</p>
+                </div>
+
+                <!-- 两栏布局 -->
+                <div class="grid-2col">
+                    <!-- 左列：控制台 -->
+                    <div>
+                        <h2>主控操作台</h2>
+                        <div class="ctrl-group">
+                            <h3>系统总控</h3>
+                            <button class="btn btn-on" id="startBtn">启动反应堆</button>
+                            <button class="btn btn-danger" id="az5Btn">AZ-5 紧急停堆</button>
+                            <button class="btn btn-warn" id="eccsBtn" style="width:100%;margin-top:8px">启动应急堆芯冷却(ECCS)</button>
+                        </div>
+                        <div class="ctrl-group">
+                            <h3>堆芯控制</h3>
+                            <div class="ctrl-item">
+                                <label>控制棒插入深度 <span class="val" id="rodVal">100%</span></label>
+                                <input type="range" id="rodSlider" min="0" max="100" value="100" step="1">
+                            </div>
+                        </div>
+                        <div class="ctrl-group">
+                            <h3>一回路冷却系统</h3>
+                            <div class="ctrl-item">
+                                <label>主冷却泵 #1 <span id="pump1State"><span class="state-dot state-stop"></span>停机</span></label>
+                                <button class="btn btn-off" id="pump1Btn">启动</button>
+                            </div>
+                            <div class="ctrl-item">
+                                <label>主冷却泵 #2 <span id="pump2State"><span class="state-dot state-stop"></span>停机</span></label>
+                                <button class="btn btn-off" id="pump2Btn">启动</button>
+                            </div>
+                            <div class="ctrl-item">
+                                <label>给水压力 <span class="val" id="feedPressVal">4.0 MPa</span></label>
+                                <input type="range" id="feedPressSlider" min="2" max="12" value="4" step="0.1">
+                            </div>
+                            <div class="ctrl-item">
+                                <label>一回路实时流量 <span class="val" id="flowVal">0 m³/h</span></label>
+                            </div>
+                        </div>
+                        <div class="ctrl-group">
+                            <h3>汽轮发电机组</h3>
+                            <div class="ctrl-item">
+                                <label>汽轮机调门开度 <span class="val" id="turbVal">0%</span></label>
+                                <input type="range" id="turbSlider" min="0" max="100" value="0">
+                            </div>
+                            <div class="ctrl-item">
+                                <label>发电机并网 <span id="gridConnState"><span class="state-dot state-stop"></span>解列</span></label>
+                                <button class="btn btn-off" id="gridConnBtn">并网</button>
+                            </div>
+                            <div class="ctrl-item">
+                                <label>电网负荷需求 <span class="val" id="gridLoadVal">0 MW</span></label>
+                                <input type="range" id="gridLoadSlider" min="0" max="1000" value="0">
+                            </div>
+                        </div>
+                        <div class="ctrl-group">
+                            <h3>系统事件日志</h3>
+                            <div class="log-box" id="logBox">
+                                <div class="log-item">[系统] 反应堆处于冷停堆状态</div>
+                            </div>
+                        </div>
+                        <div class="voice-panel">
+                            <h3>语音播报系统</h3>
+                            <div class="voice-btn-row">
+                                <button class="btn btn-voice-off" id="voiceToggleBtn">🔇 语音关闭</button>
+                                <button class="btn btn-lang" id="langToggleBtn">中文</button>
+                            </div>
+                            <div class="voice-status" id="voiceStatus">点击开启语音播报</div>
+                        </div>
+                    </div>
+
+                    <!-- 右列：实时参数 -->
+                    <div>
+                        <h2>实时参数监测</h2>
+                        <div>
+                            <h3>堆芯核测</h3>
+                            <div class="data-row"><span>堆芯热功率</span><span id="powerDisp" class="normal">0.0 MW</span></div>
+                            <div class="data-row"><span>燃料芯块平均温度</span><span id="fuelTempDisp" class="normal">250.0 ℃</span></div>
+                            <div class="data-row"><span>冷却剂出口温度</span><span id="coolTempDisp" class="normal">250.0 ℃</span></div>
+                            <div class="data-row"><span>一回路空泡率</span><span id="voidDisp" class="normal">0.0 %</span></div>
+                            <div class="data-row"><span>反应性</span><span id="reactivityDisp" class="normal">-0.080 β</span></div>
+                        </div>
+
+                        <div style="margin-top:16px">
+                            <h3>一回路热工水力</h3>
+                            <div class="data-row"><span>一回路压力</span><span id="pressDisp" class="normal">4.00 MPa</span></div>
+                            <div class="data-row"><span>稳压器水位</span><span id="levelDisp" class="normal">50.0 %</span></div>
+                            <div class="data-row"><span>冷却剂总流量</span><span id="totalFlowDisp" class="normal">0 m³/h</span></div>
+                            <div class="data-row"><span>ECCS状态</span><span id="eccsDisp" class="normal">备用</span></div>
+                        </div>
+
+                        <div class="grid-panel">
+                            <h3>蒸汽与发电系统</h3>
+                            <div class="data-row"><span>蒸汽发生器出口压力</span><span id="steamPressDisp" class="normal">0.0 MPa</span></div>
+                            <div class="data-row"><span>蒸汽流量</span><span id="steamFlowDisp" class="normal">0 t/h</span></div>
+                            <div class="data-row"><span>汽轮机转速</span><span id="turbSpeedDisp" class="normal">0 rpm</span></div>
+                            <div class="data-row"><span>发电机有功出力</span><span id="genPowerDisp" class="normal">0 MW</span></div>
+                        </div>
+
+                        <div class="grid-panel">
+                            <h3>电网状态</h3>
+                            <div class="data-row"><span>电网频率</span><span id="freqDisp" class="normal">50.00 Hz</span></div>
+                            <div class="data-row"><span>负荷需求</span><span id="loadDisp" class="normal">0 MW</span></div>
+                            <div class="data-row"><span>供需差值</span><span id="diffDisp" class="normal">0 MW</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ===== 页面切换 =====
+        function showPage(name) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            if (name === 'home') {
+                document.getElementById('page-home').classList.add('active');
+            } else if (name === 'md3') {
+                document.getElementById('page-md3').classList.add('active');
+            } else if (name === 'hedian') {
+                document.getElementById('page-hedian').classList.add('active');
+                setTimeout(initReactor, 100);
+            }
+        }
+
+        // ===== 核电站模拟器逻辑（完整移植） =====
+        let reactorInited = false;
+
+        function initReactor() {
+            if (reactorInited) return;
+            reactorInited = true;
+
+            const boomOverlay = document.getElementById('boomOverlay');
+            const startBtn = document.getElementById('startBtn');
+            const az5Btn = document.getElementById('az5Btn');
+            const eccsBtn = document.getElementById('eccsBtn');
+            const rodSlider = document.getElementById('rodSlider');
+            const rodVal = document.getElementById('rodVal');
+            const pump1Btn = document.getElementById('pump1Btn');
+            const pump2Btn = document.getElementById('pump2Btn');
+            const pump1State = document.getElementById('pump1State');
+            const pump2State = document.getElementById('pump2State');
+            const feedPressSlider = document.getElementById('feedPressSlider');
+            const feedPressVal = document.getElementById('feedPressVal');
+            const flowVal = document.getElementById('flowVal');
+            const turbSlider = document.getElementById('turbSlider');
+            const turbVal = document.getElementById('turbVal');
+            const gridConnBtn = document.getElementById('gridConnBtn');
+            const gridConnState = document.getElementById('gridConnState');
+            const gridLoadSlider = document.getElementById('gridLoadSlider');
+            const gridLoadVal = document.getElementById('gridLoadVal');
+            const powerDisp = document.getElementById('powerDisp');
+            const fuelTempDisp = document.getElementById('fuelTempDisp');
+            const coolTempDisp = document.getElementById('coolTempDisp');
+            const voidDisp = document.getElementById('voidDisp');
+            const reactivityDisp = document.getElementById('reactivityDisp');
+            const pressDisp = document.getElementById('pressDisp');
+            const levelDisp = document.getElementById('levelDisp');
+            const totalFlowDisp = document.getElementById('totalFlowDisp');
+            const eccsDisp = document.getElementById('eccsDisp');
+            const steamPressDisp = document.getElementById('steamPressDisp');
+            const steamFlowDisp = document.getElementById('steamFlowDisp');
+            const turbSpeedDisp = document.getElementById('turbSpeedDisp');
+            const genPowerDisp = document.getElementById('genPowerDisp');
+            const freqDisp = document.getElementById('freqDisp');
+            const loadDisp = document.getElementById('loadDisp');
+            const diffDisp = document.getElementById('diffDisp');
+            const logBox = document.getElementById('logBox');
+            const voiceToggleBtn = document.getElementById('voiceToggleBtn');
+            const langToggleBtn = document.getElementById('langToggleBtn');
+            const voiceStatus = document.getElementById('voiceStatus');
+
+            let isStarted = false;
+            let isExploded = false;
+            let eccsOn = false;
+            let rodDepth = 100;
+            let reactivity = -0.08;
+            let corePower = 0;
+            let fuelTemp = 250;
+            let coolTemp = 250;
+            let voidFraction = 0;
+            let pump1 = false;
+            let pump2 = false;
+            let feedPressure = 4.0;
+            let loopPressure = 4.0;
+            let totalFlow = 0;
+            let pressurizerLevel = 50;
+            let steamPressure = 0;
+            let steamFlow = 0;
+            let turbValve = 0;
+            let turbSpeed = 0;
+            let genPower = 0;
+            let gridConnected = false;
+            let gridLoad = 0;
+            let gridFreq = 50.0;
+
+            let logTimer = {};
+
+            function addLog(msg, level) {
+                if (logTimer[msg]) return;
+                logTimer[msg] = true;
+                setTimeout(() => logTimer[msg] = false, 2000);
+                const item = document.createElement('div');
+                item.className = 'log-item';
+                const time = new Date().toLocaleTimeString();
+                let color = '#bbb';
+                if (level === 'warn') color = '#ffa726';
+                if (level === 'alert') color = '#ef5350';
+                if (level === 'crit') color = '#ff1744';
+                item.style.color = color;
+                item.textContent = `[${time}] ${msg}`;
+                logBox.appendChild(item);
+                logBox.scrollTop = logBox.scrollHeight;
+            }
+
+            function setClass(el, level) {
+                el.className = '';
+                if (level === 'normal') el.classList.add('normal');
+                if (level === 'warn') el.classList.add('warn');
+                if (level === 'alert') el.classList.add('alert');
+                if (level === 'crit') el.classList.add('crit');
+            }
+
+            let voiceEnabled = false;
+            let voiceLang = 'zh';
+            let voiceTimer = {};
+            let zhVoice = null;
+            let enVoice = null;
+
+            function initVoices() {
+                const voices = speechSynthesis.getVoices();
+                zhVoice = voices.find(v => v.lang.includes('zh')) || voices[0];
+                enVoice = voices.find(v => v.lang.includes('en')) || voices[0];
+            }
+            if ('speechSynthesis' in window) {
+                initVoices();
+                speechSynthesis.onvoiceschanged = initVoices;
+            }
+
+            function speak(text, lang) {
+                if (!voiceEnabled || !('speechSynthesis' in window)) return;
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = lang === 'zh' ? zhVoice : enVoice;
+                utterance.lang = lang === 'zh' ? 'zh-CN' : 'en-US';
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
+                utterance.volume = 1.0;
+                speechSynthesis.speak(utterance);
+            }
+
+            function speakBilingual(zhText, enText, eventKey) {
+                if (!voiceEnabled) return;
+                if (eventKey && voiceTimer[eventKey]) return;
+                if (eventKey) {
+                    voiceTimer[eventKey] = true;
+                    setTimeout(() => voiceTimer[eventKey] = false, 3000);
+                }
+                if (voiceLang === 'zh') {
+                    speak(zhText, 'zh');
+                } else if (voiceLang === 'en') {
+                    speak(enText, 'en');
+                } else {
+                    speak(zhText, 'zh');
+                    setTimeout(() => speak(enText, 'en'), 1500);
+                }
+            }
+
+            voiceToggleBtn.onclick = function() {
+                if (!('speechSynthesis' in window)) {
+                    voiceStatus.textContent = '您的浏览器不支持语音播报';
+                    return;
+                }
+                voiceEnabled = !voiceEnabled;
+                if (voiceEnabled) {
+                    speechSynthesis.cancel();
+                    voiceToggleBtn.textContent = '🔊 语音开启';
+                    voiceToggleBtn.className = 'btn btn-voice';
+                    voiceStatus.textContent = '语音播报已开启';
+                    speakBilingual('语音播报系统已启动', 'Voice announcement system activated', 'voice_start');
+                } else {
+                    speechSynthesis.cancel();
+                    voiceToggleBtn.textContent = '🔇 语音关闭';
+                    voiceToggleBtn.className = 'btn btn-voice-off';
+                    voiceStatus.textContent = '语音播报已关闭';
+                }
+            };
+
+            langToggleBtn.onclick = function() {
+                if (voiceLang === 'zh') {
+                    voiceLang = 'en';
+                    langToggleBtn.textContent = 'English';
+                    voiceStatus.textContent = '当前：英文播报';
+                    if (voiceEnabled) speak('Switched to English', 'en');
+                } else if (voiceLang === 'en') {
+                    voiceLang = 'both';
+                    langToggleBtn.textContent = '双语';
+                    voiceStatus.textContent = '当前：中英双语播报';
+                    if (voiceEnabled) speakBilingual('已切换到双语模式', 'Bilingual mode enabled', 'lang_switch');
+                } else {
+                    voiceLang = 'zh';
+                    langToggleBtn.textContent = '中文';
+                    voiceStatus.textContent = '当前：中文播报';
+                    if (voiceEnabled) speak('已切换到中文', 'zh');
+                }
+            };
+
+            startBtn.onclick = function() {
+                if (isStarted || isExploded) return;
+                isStarted = true;
+                addLog('反应堆解除冷停堆，进入启动程序', 'info');
+                speakBilingual('反应堆启动，解除冷停堆状态', 'Reactor startup, cold shutdown released', 'reactor_start');
+                [rodSlider, feedPressSlider, turbSlider, gridLoadSlider, pump1Btn, pump2Btn, gridConnBtn, az5Btn, eccsBtn]
+                .forEach(el => el.classList.remove('disabled'));
+            };
+
+            rodSlider.addEventListener('input', function() {
+                rodDepth = Number(rodSlider.value);
+                rodVal.textContent = rodDepth + '%';
+            });
+
+            pump1Btn.onclick = function() {
+                if (isExploded) return;
+                pump1 = !pump1;
+                pump1Btn.textContent = pump1 ? '停运' : '启动';
+                pump1Btn.className = pump1 ? 'btn btn-on' : 'btn btn-off';
+                pump1State.innerHTML = pump1 ?
+                    '<span class="state-dot state-run"></span>运行' :
+                    '<span class="state-dot state-stop"></span>停机';
+                addLog(`主冷却泵#1 ${pump1?'启动':'停运'}`, pump1 ? 'info' : 'warn');
+                if (pump1) {
+                    speakBilingual('主冷却泵一号启动', 'Main coolant pump 1 started', 'pump1_on');
+                } else {
+                    speakBilingual('主冷却泵一号停运', 'Main coolant pump 1 stopped', 'pump1_off');
+                }
+            };
+
+            pump2Btn.onclick = function() {
+                if (isExploded) return;
+                pump2 = !pump2;
+                pump2Btn.textContent = pump2 ? '停运' : '启动';
+                pump2Btn.className = pump2 ? 'btn btn-on' : 'btn btn-off';
+                pump2State.innerHTML = pump2 ?
+                    '<span class="state-dot state-run"></span>运行' :
+                    '<span class="state-dot state-stop"></span>停机';
+                addLog(`主冷却泵#2 ${pump2?'启动':'停运'}`, pump2 ? 'info' : 'warn');
+                if (pump2) {
+                    speakBilingual('主冷却泵二号启动', 'Main coolant pump 2 started', 'pump2_on');
+                } else {
+                    speakBilingual('主冷却泵二号停运', 'Main coolant pump 2 stopped', 'pump2_off');
+                }
+            };
+
+            feedPressSlider.addEventListener('input', function() {
+                feedPressure = Number(feedPressSlider.value);
+                feedPressVal.textContent = feedPressure.toFixed(1) + ' MPa';
+            });
+
+            turbSlider.addEventListener('input', function() {
+                turbValve = Number(turbSlider.value);
+                turbVal.textContent = turbValve + '%';
+            });
+
+            gridConnBtn.onclick = function() {
+                if (isExploded || !isStarted) return;
+                gridConnected = !gridConnected;
+                gridConnBtn.textContent = gridConnected ? '解列' : '并网';
+                gridConnBtn.className = gridConnected ? 'btn btn-on' : 'btn btn-off';
+                gridConnState.innerHTML = gridConnected ?
+                    '<span class="state-dot state-run"></span>并网' :
+                    '<span class="state-dot state-stop"></span>解列';
+                addLog(`发电机${gridConnected?'并入电网':'与电网解列'}`, gridConnected ? 'info' : 'warn');
+                if (gridConnected) {
+                    speakBilingual('发电机并入电网', 'Generator connected to grid', 'grid_on');
+                } else {
+                    speakBilingual('发电机与电网解列', 'Generator disconnected from grid', 'grid_off');
+                }
+            };
+
+            gridLoadSlider.addEventListener('input', function() {
+                gridLoad = Number(gridLoadSlider.value);
+                gridLoadVal.textContent = gridLoad + ' MW';
+            });
+
+            az5Btn.onclick = function() {
+                if (isExploded || !isStarted) return;
+                rodDepth = 100;
+                rodSlider.value = 100;
+                rodVal.textContent = '100%';
+                addLog('【AZ-5触发】全部控制棒快速插入，紧急停堆启动', 'crit');
+                speakBilingual('AZ-5触发，全部控制棒快速插入，紧急停堆启动', 'AZ-5 triggered, all control rods inserted, emergency shutdown activated', 'az5');
+            };
+
+            eccsBtn.onclick = function() {
+                if (isExploded || !isStarted) return;
+                eccsOn = !eccsOn;
+                eccsBtn.textContent = eccsOn ? '关闭ECCS' : '启动应急堆芯冷却(ECCS)';
+                eccsBtn.className = eccsOn ? 'btn btn-on' : 'btn btn-warn';
+                addLog(`应急堆芯冷却系统 ${eccsOn?'投入运行':'关闭'}`, eccsOn ? 'warn' : 'info');
+                if (eccsOn) {
+                    speakBilingual('应急堆芯冷却系统投入运行', 'Emergency Core Cooling System activated', 'eccs_on');
+                } else {
+                    speakBilingual('应急堆芯冷却系统已关闭', 'Emergency Core Cooling System deactivated', 'eccs_off');
+                }
+            };
+
+            function simulate() {
+                if (isExploded) return;
+
+                let singlePumpFlow = 1800 * (feedPressure / 7);
+                totalFlow = 0;
+                if (pump1) totalFlow += singlePumpFlow;
+                if (pump2) totalFlow += singlePumpFlow;
+                if (eccsOn) totalFlow += 1200;
+                totalFlow = Math.min(totalFlow, 6000);
+
+                let rodReactivity = (100 - rodDepth) / 100 * 0.06 - 0.08;
+                let voidReactivity = voidFraction / 100 * 0.05;
+                let tempReactivity = (fuelTemp - 250) * -0.00002;
+                reactivity = rodReactivity + voidReactivity + tempReactivity;
+
+                if (!isStarted) {
+                    corePower *= 0.92;
+                } else {
+                    let targetPower = Math.max(0, (reactivity + 0.08) / 0.06 * 3200);
+                    corePower += (targetPower - corePower) * 0.08;
+                    corePower = Math.max(0, Math.min(3200, corePower));
+                }
+
+                let heatRemoved = totalFlow * 0.0008 * Math.max(0, coolTemp - 200) * 0.1;
+                fuelTemp += (corePower * 0.0025 - heatRemoved * 0.7) * 0.12;
+                coolTemp += (corePower * 0.0018 - heatRemoved) * 0.1;
+                fuelTemp = Math.max(250, fuelTemp);
+                coolTemp = Math.max(250, coolTemp);
+
+                let saturationTemp = 250 + (loopPressure - 4) * 15;
+                if (coolTemp > saturationTemp) {
+                    voidFraction += (coolTemp - saturationTemp) * 0.4;
+                } else {
+                    voidFraction -= 0.8;
+                }
+                voidFraction = Math.max(0, Math.min(80, voidFraction));
+                if (totalFlow < 500 && corePower > 500) voidFraction += 1.0;
+
+                loopPressure = feedPressure + voidFraction * 0.08;
+                pressurizerLevel = 50 + (voidFraction - 10) * 0.5;
+                pressurizerLevel = Math.max(10, Math.min(90, pressurizerLevel));
+
+                steamPressure = loopPressure * 0.85;
+                steamFlow = steamPressure * turbValve * 0.12;
+
+                if (!gridConnected) {
+                    turbSpeed += (steamFlow * 2 - turbSpeed * 0.02) * 0.08;
+                    genPower = 0;
+                } else {
+                    turbSpeed = 3000;
+                    genPower = steamFlow * 0.32;
+                    genPower = Math.min(genPower, 1000);
+                }
+
+                let powerDiff = genPower - gridLoad;
+                if (gridConnected) {
+                    gridFreq += powerDiff * 0.001;
+                    gridFreq = Math.max(48, Math.min(52, gridFreq));
+                } else {
+                    gridFreq = 50;
+                }
+
+                checkAlarms();
+
+                if (corePower > 2800 && voidFraction > 60 && loopPressure > 10) {
+                    triggerExplosion();
+                }
+                if (fuelTemp > 1800) {
+                    triggerExplosion();
+                }
+
+                updateDisplay();
+            }
+
+            function checkAlarms() {
+                if (corePower > 2500) {
+                    setClass(powerDisp, 'crit');
+                    addLog('临界警报：堆芯功率超过安全限值！', 'crit');
+                    speakBilingual('临界警报，堆芯功率超过安全限值', 'Critical alarm, core power exceeds safety limit', 'power_crit');
+                } else if (corePower > 2000) {
+                    setClass(powerDisp, 'alert');
+                } else if (corePower > 1600) {
+                    setClass(powerDisp, 'warn');
+                } else {
+                    setClass(powerDisp, 'normal');
+                }
+
+                if (fuelTemp > 1200) {
+                    setClass(fuelTempDisp, 'crit');
+                } else if (fuelTemp > 800) {
+                    setClass(fuelTempDisp, 'alert');
+                } else if (fuelTemp > 400) {
+                    setClass(fuelTempDisp, 'warn');
+                } else {
+                    setClass(fuelTempDisp, 'normal');
+                }
+
+                if (voidFraction > 40) {
+                    setClass(voidDisp, 'alert');
+                    addLog('警报：一回路空泡率过高，正反馈加剧！', 'alert');
+                    speakBilingual('警报，一回路空泡率过高，正反馈加剧', 'Alarm, primary loop void fraction too high, positive feedback intensifying', 'void_alert');
+                } else if (voidFraction > 20) {
+                    setClass(voidDisp, 'warn');
+                } else {
+                    setClass(voidDisp, 'normal');
+                }
+
+                if (loopPressure > 9) {
+                    setClass(pressDisp, 'crit');
+                } else if (loopPressure > 7.5) {
+                    setClass(pressDisp, 'alert');
+                } else if (loopPressure > 6.5) {
+                    setClass(pressDisp, 'warn');
+                } else {
+                    setClass(pressDisp, 'normal');
+                }
+
+                if (gridConnected && Math.abs(gridFreq - 50) > 0.8) {
+                    setClass(freqDisp, 'alert');
+                } else if (Math.abs(gridFreq - 50) > 0.3) {
+                    setClass(freqDisp, 'warn');
+                } else {
+                    setClass(freqDisp, 'normal');
+                }
+            }
+
+            function triggerExplosion() {
+                isExploded = true;
+                boomOverlay.style.display = 'block';
+                addLog('【灾难性事故】堆芯功率骤增，蒸汽爆炸发生！', 'crit');
+                speakBilingual('灾难性事故，堆芯功率骤增，蒸汽爆炸发生', 'Catastrophic accident, core power surge, steam explosion occurred', 'explosion');
+                document.querySelectorAll('#page-hedian input, #page-hedian button').forEach(el => el.disabled = true);
+            }
+
+            function updateDisplay() {
+                powerDisp.textContent = corePower.toFixed(1) + ' MW';
+                fuelTempDisp.textContent = fuelTemp.toFixed(1) + ' ℃';
+                coolTempDisp.textContent = coolTemp.toFixed(1) + ' ℃';
+                voidDisp.textContent = voidFraction.toFixed(1) + ' %';
+                reactivityDisp.textContent = reactivity.toFixed(3) + ' β';
+
+                pressDisp.textContent = loopPressure.toFixed(2) + ' MPa';
+                levelDisp.textContent = pressurizerLevel.toFixed(1) + ' %';
+                totalFlowDisp.textContent = Math.round(totalFlow) + ' m³/h';
+                flowVal.textContent = Math.round(totalFlow) + ' m³/h';
+                eccsDisp.textContent = eccsOn ? '投入运行' : '备用';
+                eccsDisp.className = eccsOn ? 'warn' : 'normal';
+
+                steamPressDisp.textContent = steamPressure.toFixed(2) + ' MPa';
+                steamFlowDisp.textContent = steamFlow.toFixed(1) + ' t/h';
+                turbSpeedDisp.textContent = Math.round(turbSpeed) + ' rpm';
+                genPowerDisp.textContent = genPower.toFixed(1) + ' MW';
+
+                freqDisp.textContent = gridFreq.toFixed(2) + ' Hz';
+                loadDisp.textContent = gridLoad + ' MW';
+                diffDisp.textContent = (genPower - gridLoad).toFixed(1) + ' MW';
+            }
+
+            // 初始禁用所有控制
+            [rodSlider, feedPressSlider, turbSlider, gridLoadSlider, pump1Btn, pump2Btn, gridConnBtn, az5Btn, eccsBtn]
+            .forEach(el => el.classList.add('disabled'));
+
+            setInterval(simulate, 50);
+        }
+    </script>
+
+</body>
+</html>
