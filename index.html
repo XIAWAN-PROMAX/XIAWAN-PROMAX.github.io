@@ -11,9 +11,10 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 .page{display:none;animation:pageIn .45s cubic-bezier(.25,.1,.25,1)}
 .page.active{display:block}
 @keyframes pageIn{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:translateY(0)}}
-.back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,255,255,.55);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.4);border-radius:30px;font-size:14px;color:#1c1c1e;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;box-shadow:0 2px 12px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.5);margin-bottom:16px;border:none}
-.back-btn:active{transform:scale(.96)}
-@media(hover:hover){.back-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.5)}}
+.back-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(255,255,255,.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.55);border-radius:30px;font-size:14px;font-weight:500;color:#1c1c1e;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .3s ease;box-shadow:0 4px 20px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 0 rgba(255,255,255,.3);margin-bottom:16px;position:relative;overflow:hidden}
+.back-btn::before{content:'';position:absolute;top:-30%;left:-30%;width:160%;height:160%;background:radial-gradient(ellipse at 35% 20%,rgba(255,255,255,.45) 0%,transparent 55%);pointer-events:none;transition:transform .6s cubic-bezier(.25,.1,.25,1)}
+.back-btn:active{transform:scale(.96);background:rgba(255,255,255,.85)}
+@media(hover:hover){.back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(255,255,255,.4)}.back-btn:hover::before{transform:translate(3%,-2%)}}
 .header h1{font-size:28px;font-weight:500;color:#1c1c1e;margin-bottom:32px}
 .card-grid{display:flex;flex-direction:column;gap:14px}
  .glass-card{background:rgba(255,255,255,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.45);border-radius:20px;padding:18px 22px;box-shadow:0 4px 24px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2);transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s cubic-bezier(.34,1.56,.64,1);cursor:pointer;position:relative;overflow:hidden}
@@ -21,14 +22,31 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
  @media(hover:hover){.glass-card:hover::before{transform:translate(5%,-5%)}}
  @keyframes cardPop{0%{transform:translateY(0) scale(1);box-shadow:0 4px 24px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2)}30%{transform:translateY(-10px) scale(1.025);box-shadow:0 20px 56px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2)}60%{transform:translateY(-3px) scale(.99);box-shadow:0 8px 28px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2)}100%{transform:translateY(0) scale(1);box-shadow:0 4px 24px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2)}}
  .glass-card.pop{animation:cardPop .5s cubic-bezier(.25,.1,.25,1) forwards}
- @media(hover:hover){.glass-card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 40px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2)}}
+  @media(hover:hover){.glass-card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 40px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2)}}
 .card-content{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+.pro-badge{font-size:11px;background:#c97d2b;color:#fff;padding:2px 10px;border-radius:30px;margin-left:auto;font-weight:500;white-space:nowrap}
+.pro-badge.trial{background:#5b8def;animation:badgePulse 2s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{opacity:1}50%{opacity:.6}}
 .icon-box{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;background:rgba(0,0,0,.04);color:#1c1c1e;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3)}
 .card-text{font-size:17px;font-weight:450;color:#1c1c1e}
 .card-arrow{margin-left:auto;color:#c0c0c6;font-size:18px;transition:transform .3s ease}
 .glass-card:hover .card-arrow{transform:translateX(4px)}
-.footer{text-align:center;margin-top:40px;font-size:12px;color:#b8b8be;letter-spacing:.5px}
-.footer span{color:#c97d2b}
+.footer{text-align:center;margin-top:40px;font-size:12px;color:#b8b8be;letter-spacing:.5px;cursor:pointer;transition:color .3s}
+.footer:hover{color:#8e8e93}
+.footer span{color:#c97d2b;transition:color .3s}
+.footer:hover span{color:#e08d3c}
+/* 关于弹窗 - 液态玻璃 */
+.about-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:10001;align-items:center;justify-content:center}
+.about-overlay.show{display:flex}
+.about-glass{background:rgba(255,255,255,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.5);border-radius:24px;padding:36px 28px 28px;max-width:380px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.7);position:relative;overflow:hidden;animation:aboutIn .5s cubic-bezier(.25,.1,.25,1)}
+.about-glass::before{content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;background:radial-gradient(ellipse at 35% 15%,rgba(255,255,255,.5) 0%,rgba(201,125,43,.08) 40%,transparent 70%);pointer-events:none;animation:aboutFlow 6s ease-in-out infinite}
+@keyframes aboutFlow{0%,100%{transform:translate(0,0) rotate(0deg)}33%{transform:translate(3%,-2%) rotate(1deg)}66%{transform:translate(-2%,2%) rotate(-1deg)}}
+@keyframes aboutIn{0%{opacity:0;transform:translateY(24px) scale(.94)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.about-glass h2{font-size:22px;font-weight:600;color:#1c1c1e;margin-bottom:14px;position:relative;z-index:1}
+.about-glass p{font-size:15px;color:#5c5c5e;line-height:1.7;margin-bottom:20px;position:relative;z-index:1}
+.about-glass .about-ver{font-size:17px;font-weight:600;color:#5c5c5e;letter-spacing:2px;position:relative;z-index:1;margin-bottom:4px}
+.about-glass .about-close{display:inline-block;margin-top:20px;padding:10px 32px;background:rgba(28,28,30,.88);color:#fff;border-radius:30px;border:none;font-size:15px;font-weight:500;cursor:pointer;position:relative;z-index:1;transition:transform .25s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.about-glass .about-close:active{transform:scale(.95)}
 .page-md3{background:rgba(255,255,255,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.45);border-radius:24px;padding:32px 28px;box-shadow:0 4px 32px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden}
 .page-md3::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.3) 0%,transparent 50%);pointer-events:none}
 .page-md3 h1{font-size:30px;font-weight:600;color:#1c1c1e;text-align:center;position:relative;z-index:1}
@@ -84,6 +102,25 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 .page-hedian .reactor-wrap .voice-status{font-size:12px;color:#888;margin-top:4px;text-align:center}
 .page-hedian .reactor-wrap .voice-panel{margin-top:12px;padding:10px;border:1px solid #2a2a2a;border-radius:6px}
 .page-hedian .reactor-wrap .grid-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.page-network{background:rgba(255,255,255,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.45);border-radius:24px;padding:32px 28px;box-shadow:0 4px 32px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden}
+.page-network::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.3) 0%,transparent 50%);pointer-events:none}
+.page-network h1{font-size:30px;font-weight:600;color:#1c1c1e;text-align:center;position:relative;z-index:1}
+.page-network .sub{text-align:center;color:#8e8e93;font-size:15px;margin-bottom:28px;position:relative;z-index:1}
+.net-hero-card{background:rgba(255,255,255,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.45);border-radius:20px;padding:24px 22px;text-align:center;margin-bottom:14px;position:relative;z-index:1;box-shadow:0 4px 24px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6)}
+.net-hero-city{font-size:28px;font-weight:600;color:#1c1c1e;letter-spacing:2px}
+.net-hero-city.loading{color:#c0c0c6;font-size:18px}
+.net-hero-detail{font-size:13px;color:#8e8e93;margin-top:4px}
+.net-hero-detail.loading{color:#c0c0c6}
+.net-info-row{display:flex;gap:12px;margin-bottom:12px;position:relative;z-index:1}
+.net-info-item{flex:1;background:rgba(255,255,255,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.45);border-radius:20px;padding:16px 14px;box-shadow:0 4px 24px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6);text-align:center}
+.net-info-icon{width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;background:rgba(0,0,0,.04);color:#1c1c1e;margin-bottom:8px}
+.net-info-label{font-size:12px;color:#8e8e93;margin-bottom:4px}
+.net-info-value{font-size:15px;font-weight:600;color:#1c1c1e;word-break:break-all}
+.net-info-value.loading{color:#c0c0c6;font-weight:400}
+.refresh-btn{display:inline-block;padding:12px 36px;background:rgba(28,28,30,.9);backdrop-filter:blur(8px);color:#fff;border-radius:30px;border:none;font-size:16px;font-weight:500;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease;box-shadow:0 4px 16px rgba(28,28,30,.15);border:1px solid rgba(255,255,255,.1);margin-top:20px;position:relative;z-index:1;-webkit-tap-highlight-color:transparent;outline:none}
+.refresh-btn:active{transform:scale(.96);background:rgba(28,28,30,.9)}
+.refresh-btn:focus{outline:none}
+@media(hover:hover){.refresh-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(28,28,30,.2)}}
 @media(orientation:landscape) and (max-height:500px){
 .container{max-width:95vw;padding:0 4px}
 .card-grid{flex-direction:row;flex-wrap:wrap;justify-content:center}
@@ -112,6 +149,72 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 .page-hedian{padding:6px 4px}
 .page-hedian .reactor-wrap .grid-2col{grid-template-columns:1fr;gap:10px}
 }
+/* ========== 深色模式自动适配 ========== */
+@media(prefers-color-scheme:dark){
+  body{background:#0d0d0f}
+  .header h1{color:#f0f0f2}
+  .container{max-width:560px}
+  /* 返回按钮 - 深色液态玻璃 */
+  .back-btn{background:rgba(44,44,48,.72);border-color:rgba(255,255,255,.12);color:#f0f0f2;box-shadow:0 4px 20px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08),inset 0 -1px 0 rgba(255,255,255,.04)}
+  .back-btn::before{background:radial-gradient(ellipse at 35% 20%,rgba(255,255,255,.08) 0%,transparent 55%)}
+  .back-btn:active{background:rgba(60,60,66,.9)}
+  @media(hover:hover){.back-btn:hover{box-shadow:0 8px 28px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(255,255,255,.06)}}
+  /* 卡片 */
+  .glass-card{background:rgba(44,44,48,.65);border-color:rgba(255,255,255,.1);box-shadow:0 4px 24px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}
+  .glass-card::before{background:radial-gradient(ellipse at 30% 10%,rgba(255,255,255,.06) 0%,transparent 60%)}
+  .glass-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}
+  @keyframes cardPopDark{0%{transform:translateY(0) scale(1);box-shadow:0 4px 24px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}30%{transform:translateY(-10px) scale(1.025);box-shadow:0 20px 56px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}60%{transform:translateY(-3px) scale(.99);box-shadow:0 8px 28px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}100%{transform:translateY(0) scale(1);box-shadow:0 4px 24px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}}
+  .glass-card.pop{animation-name:cardPopDark}
+  .card-text{color:#f0f0f2}
+  .card-arrow{color:#6e6e73}
+  .icon-box{background:rgba(255,255,255,.08);color:#f0f0f2;border-color:rgba(255,255,255,.08)}
+  .pro-badge{background:#e08d3c}
+  .pro-badge.trial{background:#5b8def}
+  /* 页脚 */
+  .footer{color:#6e6e73}
+  .footer:hover{color:#9e9ea3}
+  .footer span{color:#e08d3c}
+  .footer:hover span{color:#f0a050}
+  /* 关于弹窗 */
+  .about-glass{background:rgba(44,44,48,.88);border-color:rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
+  .about-glass::before{background:radial-gradient(ellipse at 35% 15%,rgba(255,255,255,.06) 0%,rgba(201,125,43,.12) 40%,transparent 70%)}
+  .about-glass h2{color:#f0f0f2}
+  .about-glass p{color:#b0b0b5}
+  .about-glass .about-ver{color:#b0b0b5}
+  .about-glass .about-close{background:rgba(240,240,242,.9);color:#1c1c1e}
+  /* 麦地版小管家页面 */
+  .page-md3{background:rgba(44,44,48,.65);border-color:rgba(255,255,255,.1);box-shadow:0 4px 32px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}
+  .page-md3::before{background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.05) 0%,transparent 50%)}
+  .page-md3 h1{color:#f0f0f2}
+  .page-md3 .sub{color:#6e6e73}
+  .feature{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}
+  .feature h3{color:#f0f0f2}
+  .feature p{color:#6e6e73}
+  .download-area{border-color:rgba(255,255,255,.08)}
+  .download-area h2{color:#f0f0f2}
+  .download-area p{color:#6e6e73}
+  .download-btn{background:rgba(240,240,242,.9);color:#1c1c1e;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+  .footer-md3{color:#6e6e73}
+  /* 网络信息页面 */
+  .page-network{background:rgba(44,44,48,.65);border-color:rgba(255,255,255,.1);box-shadow:0 4px 32px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}
+  .page-network::before{background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.05) 0%,transparent 50%)}
+  .page-network h1{color:#f0f0f2}
+  .page-network .sub{color:#6e6e73}
+  .net-hero-card{background:rgba(44,44,48,.65);border-color:rgba(255,255,255,.1);box-shadow:0 4px 24px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06)}
+  .net-hero-city{color:#f0f0f2}
+  .net-hero-city.loading{color:#6e6e73}
+  .net-hero-detail{color:#6e6e73}
+  .net-hero-detail.loading{color:#5e5e63}
+  .net-info-item{background:rgba(44,44,48,.65);border-color:rgba(255,255,255,.1);box-shadow:0 4px 24px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06)}
+  .net-info-icon{background:rgba(255,255,255,.08);color:#f0f0f2}
+  .net-info-label{color:#6e6e73}
+  .net-info-value{color:#f0f0f2}
+  .net-info-value.loading{color:#5e5e63}
+  .refresh-btn{background:rgba(240,240,242,.9);color:#1c1c1e;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+  /* 试用弹窗 */
+  .trial-glass{background:rgba(44,44,48,.88);border-color:rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
+  .trial-glass p{color:#b0b0b5}
+}
 </style>
 </head>
 <body>
@@ -121,8 +224,9 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 <div class="card-grid">
 <div class="glass-card" onclick="showPage('md3')"><div class="card-content"><div class="icon-box">改</div><span class="card-text">麦地版小管家V2</span><span class="card-arrow">→</span></div></div>
 <div class="glass-card" onclick="showPage('hedian')"><div class="card-content"><div class="icon-box">核</div><span class="card-text">核电站模拟器</span><span class="card-arrow">→</span></div></div>
+<div class="glass-card" onclick="showPage('network')" id="networkCard"><div class="card-content"><div class="icon-box">网</div><span class="card-text">网络信息</span><span class="pro-badge trial" id="trialBadge" style="display:none">试用</span><span class="card-arrow">→</span></div></div>
 </div>
-<div class="footer">由 <span>无隐创新</span> 提供技术支持</div>
+<div class="footer" onclick="openAbout()">由 <span>无隐创新</span> 提供技术支持</div>
 </div>
 
 <div id="page-md3" class="page page-md3">
@@ -194,16 +298,106 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 </div>
 </div>
 </div>
+
+<!-- 网络信息页面 -->
+<div id="page-network" class="page page-network">
+<button class="back-btn" onclick="showPage('home')">← 返回</button>
+<h1>网络透视</h1>
+<!-- 位置大卡片 -->
+<div class="net-hero-card" id="netHero">
+  <div class="net-hero-city loading" id="netHeroCity">定位中...</div>
+  <div class="net-hero-detail loading" id="netHeroDetail">正在分析你的网络位置</div>
 </div>
+<!-- 信息小卡片行 -->
+<div class="net-info-row">
+  <div class="net-info-item">
+    <div class="net-info-icon">供</div>
+    <div class="net-info-label">网络服务商</div>
+    <div class="net-info-value loading" id="netIsp">加载中...</div>
+  </div>
+  <div class="net-info-item">
+    <div class="net-info-icon">身</div>
+    <div class="net-info-label">网络身份</div>
+    <div class="net-info-value loading" id="netIp">加载中...</div>
+  </div>
+</div>
+<div class="net-info-row">
+  <div class="net-info-item">
+    <div class="net-info-icon">速</div>
+    <div class="net-info-label">连接速度</div>
+    <div class="net-info-value loading" id="netType">加载中...</div>
+  </div>
+  <div class="net-info-item">
+    <div class="net-info-icon">区</div>
+    <div class="net-info-label">所在时区</div>
+    <div class="net-info-value loading" id="netTz">加载中...</div>
+  </div>
+</div>
+<div style="text-align:center;margin-top:8px"><button class="refresh-btn" onclick="fetchNetworkInfo()">重新检测</button></div>
+<div class="footer" style="margin-top:24px;position:relative;z-index:1">由 <span>无隐创新</span> 提供计算服务</div>
+</div>
+
+<!-- 首次访问试用提示弹窗 -->
+<div id="trialWelcomeOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.55);z-index:10000;align-items:center;justify-content:center">
+<div style="background:rgba(255,255,255,.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-radius:24px;padding:32px 24px;max-width:360px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.15)">
+<div style="font-size:48px;margin-bottom:12px">🎉</div>
+<h2 style="font-size:22px;font-weight:600;color:#1c1c1e;margin-bottom:8px">Pro功能体验</h2>
+<p style="font-size:15px;color:#8e8e93;margin-bottom:20px">网络信息是Pro版专属功能。<br>你可以免费体验 <b style="color:#5b8def">2天</b>，到期后该功能将锁定。<br>其他功能不受影响，请放心使用。</p>
+<button onclick="dismissTrialWelcome()" style="display:inline-block;padding:12px 36px;background:rgba(28,28,30,.9);color:#fff;border-radius:30px;border:none;font-size:16px;font-weight:500;cursor:pointer">开始体验</button>
+<p style="font-size:12px;color:#c0c0c6;margin-top:16px">Pro激活功能即将上线，敬请期待</p>
+</div>
+</div>
+
+<!-- 试用到期温和提示弹窗 -->
+<div id="trialExpiredOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center">
+<div style="background:rgba(255,255,255,.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-radius:24px;padding:32px 24px;max-width:360px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.15)">
+<div style="font-size:48px;margin-bottom:12px">⏰</div>
+<h2 style="font-size:22px;font-weight:600;color:#1c1c1e;margin-bottom:8px">试用期已结束</h2>
+<p style="font-size:15px;color:#8e8e93;margin-bottom:20px">网络信息功能需要Pro版才能继续使用。<br>其他功能不受影响，请放心使用。</p>
+<button onclick="document.getElementById('trialExpiredOverlay').style.display='none'" style="display:inline-block;padding:12px 36px;background:rgba(28,28,30,.9);color:#fff;border-radius:30px;border:none;font-size:16px;font-weight:500;cursor:pointer">我知道了</button>
+<p style="font-size:12px;color:#c0c0c6;margin-top:16px">Pro激活功能即将上线，敬请期待</p>
+</div>
+</div>
+
+<!-- 关于弹窗 -->
+<div class="about-overlay" id="aboutOverlay" onclick="closeAbout(event)">
+<div class="about-glass" onclick="event.stopPropagation()">
+<h2>关于我们</h2>
+<p>Hello，我是瞎玩。感谢你来看我的个人主页。<br>这个项目目前被放置于 GitHub 托管，<br>你可以去给我点个 Star，谢谢。</p>
+<div class="about-ver">v2.5</div>
+<button class="about-close" onclick="closeAbout()">好的</button>
+</div>
+</div>
+
+<!-- 右上角试用倒计时 -->
+<div id="trialCountdown" style="display:none;position:fixed;top:12px;right:12px;background:rgba(91,141,239,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;z-index:9998;box-shadow:0 2px 12px rgba(91,141,239,.3);animation:badgePulse 2s ease-in-out infinite">试用剩余：--</div>
+
 <script>
+// ========== 关于弹窗 ==========
+function openAbout() {
+    document.getElementById('aboutOverlay').classList.add('show');
+}
+function closeAbout(e) {
+    if (e && e.target !== document.getElementById('aboutOverlay')) return;
+    document.getElementById('aboutOverlay').classList.remove('show');
+}
+
 // 页面切换
 function showPage(name) {
+    // 试用检查：访问网络信息页面时验证是否到期
+    if (name === 'network') {
+        if (!checkTrialAccess()) return;
+    }
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     if (name === 'home') document.getElementById('page-home').classList.add('active');
     else if (name === 'md3') document.getElementById('page-md3').classList.add('active');
     else if (name === 'hedian') {
         document.getElementById('page-hedian').classList.add('active');
         setTimeout(initReactor, 100);
+    }
+    else if (name === 'network') {
+        document.getElementById('page-network').classList.add('active');
+        fetchNetworkInfo();
     }
 }
 
@@ -493,6 +687,215 @@ function initReactor() {
 
     [rodSlider, feedPressSlider, turbSlider, gridLoadSlider, pump1Btn, pump2Btn, gridConnBtn, az5Btn, eccsBtn].forEach(el => el.classList.add('disabled'));
     setInterval(simulate, 50);
+}
+// ========== 网络信息 API 获取 ==========
+async function fetchNetworkInfo() {
+    var heroCard = document.getElementById('netHero');
+    var heroCity = document.getElementById('netHeroCity');
+    var heroDetail = document.getElementById('netHeroDetail');
+    var ipEl = document.getElementById('netIp');
+    var ispEl = document.getElementById('netIsp');
+    var typeEl = document.getElementById('netType');
+    var tzEl = document.getElementById('netTz');
+    var loadingCls = 'loading';
+
+    // 进入扫描动画
+    heroCard.classList.add('scanning');
+    heroCity.textContent = '定位中...'; heroCity.classList.add(loadingCls);
+    heroDetail.textContent = '正在分析你的网络位置'; heroDetail.classList.add(loadingCls);
+    ipEl.textContent = '...'; ipEl.classList.add(loadingCls);
+    ispEl.textContent = '...'; ispEl.classList.add(loadingCls);
+    typeEl.textContent = '...'; typeEl.classList.add(loadingCls);
+    tzEl.textContent = '...'; tzEl.classList.add(loadingCls);
+
+    // 先用 ipleak.net（城市级别精准）
+    try {
+        var resp = await fetch('https://ipleak.net/json/');
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        var d = await resp.json();
+        heroCard.classList.remove('scanning');
+        var city = d.city_name || d.city || '未知城市';
+        var region = d.region_name || d.region || '';
+        var country = d.country_name || d.country || '';
+        // 拼成 "广东惠州" 而不是 "广东, 广州"
+        var locStr = '';
+        if (region && city) {
+            locStr = region + city;
+        } else if (region) {
+            locStr = region;
+        } else if (city) {
+            locStr = city + (country ? ', ' + country : '');
+        } else {
+            locStr = d.country_name || d.country || '未知位置';
+        }
+        heroCity.textContent = locStr;
+        heroCity.classList.remove(loadingCls);
+        heroDetail.textContent = (country || '') + (region ? ' · ' + region : '') + ' · ' + (city || '');
+        heroDetail.classList.remove(loadingCls);
+        ipEl.textContent = d.ip || '未知';
+        ipEl.classList.remove(loadingCls);
+        ispEl.textContent = d.isp_name || d.org || d.isp || '未知';
+        ispEl.classList.remove(loadingCls);
+        var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        var speedStr = conn ? (conn.effectiveType || '').toUpperCase() : '';
+        if (!speedStr) speedStr = '未知';
+        // 翻译成中文装逼版
+        var speedMap = {'SLOW-2G':'龟速 2G','2G':'2G 网络','3G':'3G 网络','4G':'4G 高速','5G':'5G 超快','WIFI':'WiFi 无线'};
+        typeEl.textContent = speedMap[speedStr] || speedStr;
+        typeEl.classList.remove(loadingCls);
+        tzEl.textContent = d.timezone || 'UTC+8';
+        tzEl.classList.remove(loadingCls);
+    } catch(e) {
+        // 备用 ipapi.co
+        try {
+            var resp2 = await fetch('https://ipapi.co/json/');
+            if (!resp2.ok) throw new Error('HTTP ' + resp2.status);
+            var d2 = await resp2.json();
+            heroCard.classList.remove('scanning');
+            var locStr2 = (d2.region || '') + (d2.city || '') || d2.country_name || '未知';
+            heroCity.textContent = locStr2;
+            heroCity.classList.remove(loadingCls);
+            heroDetail.textContent = [d2.country_name, d2.region, d2.city].filter(Boolean).join(' · ') || '未知';
+            heroDetail.classList.remove(loadingCls);
+            ipEl.textContent = d2.ip || '未知';
+            ipEl.classList.remove(loadingCls);
+            ispEl.textContent = d2.org || '未知';
+            ispEl.classList.remove(loadingCls);
+            var conn2 = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            var sp2 = conn2 ? conn2.effectiveType : '未知';
+            typeEl.textContent = sp2 ? sp2.toUpperCase() : '未知';
+            typeEl.classList.remove(loadingCls);
+            tzEl.textContent = d2.timezone || 'UTC+8';
+            tzEl.classList.remove(loadingCls);
+        } catch(e2) {
+            heroCard.classList.remove('scanning');
+            heroCity.textContent = '检测失败';
+            heroCity.classList.remove(loadingCls);
+            heroDetail.textContent = '请检查网络后重试';
+            heroDetail.classList.remove(loadingCls);
+            ipEl.textContent = '失败'; ipEl.classList.remove(loadingCls);
+            ispEl.textContent = '失败'; ispEl.classList.remove(loadingCls);
+            typeEl.textContent = '失败'; typeEl.classList.remove(loadingCls);
+            tzEl.textContent = '失败'; tzEl.classList.remove(loadingCls);
+        }
+    }
+}
+
+
+// ========== 试用机制 ==========
+var TRIAL_KEY = 'xw_trial_start';
+var TRIAL_HOURS = 48; // 2天 = 48小时
+var trialTimer = null;
+
+function getTrialStart() {
+    var v = localStorage.getItem(TRIAL_KEY);
+    return v ? parseInt(v) : 0;
+}
+
+function setTrialStart(ts) {
+    localStorage.setItem(TRIAL_KEY, ts);
+}
+
+function trialRemainingMs() {
+    var start = getTrialStart();
+    if (!start) return -1; // 未开始
+    var end = start + TRIAL_HOURS * 60 * 60 * 1000;
+    return Math.max(0, end - Date.now());
+}
+
+function isTrialExpired() {
+    var start = getTrialStart();
+    if (!start) return false;
+    return trialRemainingMs() <= 0;
+}
+
+// 首次打开页面时调用
+function initTrial() {
+    var badge = document.getElementById('trialBadge');
+    var countdown = document.getElementById('trialCountdown');
+    var start = getTrialStart();
+    if (!start) {
+        // 全新用户：显示欢迎弹窗
+        document.getElementById('trialWelcomeOverlay').style.display = 'flex';
+        // 点击"开始体验"后记录开始时间
+        return;
+    }
+    if (isTrialExpired()) {
+        // 已到期：隐藏试用标签和倒计时
+        if (badge) badge.style.display = 'none';
+        if (countdown) countdown.style.display = 'none';
+        return;
+    }
+    // 试用中：显示标签和倒计时
+    if (badge) badge.style.display = 'inline-block';
+    if (countdown) countdown.style.display = 'block';
+    startCountdownUI();
+}
+
+// 用户在欢迎弹窗点击"开始体验"
+function dismissTrialWelcome() {
+    setTrialStart(Date.now());
+    document.getElementById('trialWelcomeOverlay').style.display = 'none';
+    var badge = document.getElementById('trialBadge');
+    var countdown = document.getElementById('trialCountdown');
+    if (badge) badge.style.display = 'inline-block';
+    if (countdown) countdown.style.display = 'block';
+    startCountdownUI();
+    // 自动打开网络信息页面开始体验
+    showPage('network');
+}
+
+// 右上角倒计时更新
+function startCountdownUI() {
+    var countdown = document.getElementById('trialCountdown');
+    if (!countdown) return;
+    if (trialTimer) clearInterval(trialTimer);
+    function tick() {
+        var remain = trialRemainingMs();
+        if (remain <= 0) {
+            countdown.textContent = '试用已到期';
+            countdown.style.background = 'rgba(201,125,43,.92)';
+            clearInterval(trialTimer);
+            trialTimer = null;
+            // 如果正在网络信息页面，弹出到期提示
+            var netPage = document.getElementById('page-network');
+            if (netPage && netPage.classList.contains('active')) {
+                document.getElementById('trialExpiredOverlay').style.display = 'flex';
+                showPage('home');
+            }
+            document.getElementById('trialBadge').style.display = 'none';
+            setTimeout(function() { countdown.style.display = 'none'; }, 3000);
+            return;
+        }
+        var h = Math.floor(remain / 3600000);
+        var m = Math.floor((remain % 3600000) / 60000);
+        var s = Math.floor((remain % 60000) / 1000);
+        countdown.textContent = '试用剩余：' + h + '时' + m + '分' + s + '秒';
+    }
+    tick();
+    trialTimer = setInterval(tick, 1000);
+}
+
+// 访问网络信息时的门卫检查
+function checkTrialAccess() {
+    var start = getTrialStart();
+    if (!start) {
+        // 还没点过"开始体验"，弹出欢迎弹窗
+        document.getElementById('trialWelcomeOverlay').style.display = 'flex';
+        return false;
+    }
+    if (isTrialExpired()) {
+        document.getElementById('trialExpiredOverlay').style.display = 'flex';
+        return false;
+    }
+    return true;
+}
+
+// 页面加载时初始化试用
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTrial);
+} else {
+    initTrial();
 }
 </script>
 </body>
