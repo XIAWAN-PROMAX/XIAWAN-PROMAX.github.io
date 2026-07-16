@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.flash.recorder.app-mergeReleaseResources-30:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
+            "map": [
+                {
+                    "source": "/root/.gradle/caches/8.14.4/transforms/1a2d511c8d7f99432ca4f140285cc018/transformed/material-1.11.0/res/values-h320dp-port-v13/values-h320dp-port-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "63",
+                        "endOffsets": "114"
+                    }
+                }
+            ]
+        }
+    ]
+}

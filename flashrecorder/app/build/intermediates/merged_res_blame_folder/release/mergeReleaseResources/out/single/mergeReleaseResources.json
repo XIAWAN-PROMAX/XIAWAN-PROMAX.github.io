@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "com.flash.recorder.app-release-32:/layout_activity_gallery.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/layout/activity_gallery.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/layout_item_video.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/layout/item_video.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/drawable_float_idle.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/drawable/float_idle.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/drawable_float_rec.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/drawable/float_rec.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/layout_activity_main.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/drawable_float_bg_rec.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/drawable/float_bg_rec.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/layout_floating_button.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/layout/floating_button.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/layout_activity_player.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/layout/activity_player.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.flash.recorder.app-release-32:/drawable_float_bg_idle.xml.flat",
+        "source": "com.flash.recorder.app-main-33:/drawable/float_bg_idle.xml"
+    }
+]
