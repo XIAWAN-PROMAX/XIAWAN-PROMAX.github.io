@@ -15,7 +15,19 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 .back-btn::before{content:'';position:absolute;top:-30%;left:-30%;width:160%;height:160%;background:radial-gradient(ellipse at 35% 20%,rgba(255,255,255,.45) 0%,transparent 55%);pointer-events:none;transition:transform .6s cubic-bezier(.25,.1,.25,1)}
 .back-btn:active{transform:scale(.96);background:rgba(255,255,255,.85)}
 @media(hover:hover){.back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(255,255,255,.4)}.back-btn:hover::before{transform:translate(3%,-2%)}}
-.header h1{font-size:28px;font-weight:500;color:#1c1c1e;margin-bottom:32px}
+ .header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:32px}
+.header h1{font-size:28px;font-weight:500;color:#1c1c1e;margin:0}
+.theme-switcher{display:flex;align-items:center;gap:2px;padding:3px;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.58);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:20px;box-shadow:0 4px 18px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.75);position:relative;overflow:hidden;flex-shrink:0}
+.theme-choice{width:32px;height:30px;border:0;background:transparent;color:#8e8e93;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;position:relative;z-index:2;transition:color .35s ease,transform .25s ease}
+.theme-choice:active{transform:scale(.9)}
+.theme-choice.active{color:#1c1c1e}
+.theme-choice.auto{font-size:11px;font-weight:600;letter-spacing:.2px}
+.theme-slider{position:absolute;top:3px;left:3px;width:32px;height:30px;border-radius:15px;background:rgba(255,255,255,.8);box-shadow:0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.9);transition:transform .45s cubic-bezier(.22,1,.36,1),background .45s ease}
+.theme-switcher.dark .theme-slider{background:rgba(72,72,78,.9);box-shadow:0 2px 10px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.1)}
+.theme-icon-burst{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.65);font-size:76px;line-height:1;opacity:0;pointer-events:none;z-index:20000;filter:drop-shadow(0 8px 28px rgba(0,0,0,.18));transition:none}
+.theme-icon-burst.show{animation:themeIconBurst .72s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes themeIconBurst{0%{opacity:0;transform:translate(-50%,-50%) scale(.45) rotate(-18deg)}18%{opacity:1;transform:translate(-50%,-50%) scale(1.05) rotate(0)}55%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.28) rotate(12deg)}}
+
 .card-grid{display:flex;flex-direction:column;gap:14px}
  .glass-card{background:rgba(255,255,255,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.45);border-radius:20px;padding:18px 22px;box-shadow:0 4px 24px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2);transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s cubic-bezier(.34,1.56,.64,1);cursor:pointer;position:relative;overflow:hidden}
  .glass-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 10%,rgba(255,255,255,.35) 0%,transparent 60%);pointer-events:none;transition:transform .8s cubic-bezier(.25,.1,.25,1)}
@@ -95,6 +107,10 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 .page-hedian .reactor-wrap .voice-status{font-size:12px;color:#888;margin-top:4px;text-align:center}
 .page-hedian .reactor-wrap .voice-panel{margin-top:12px;padding:10px;border:1px solid #2a2a2a;border-radius:6px}
 .page-hedian .reactor-wrap .grid-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.network-title-row{display:flex;align-items:center;justify-content:center;gap:10px;position:relative;z-index:2;margin-bottom:4px}
+.network-title-row h1{margin:0!important}
+.theme-toggle{border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:#5c5c5e;border-radius:18px;padding:7px 11px;font-size:12px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.7);transition:transform .2s ease,background .2s ease}
+.theme-toggle:active{transform:scale(.95)}
 .page-network{background:rgba(255,255,255,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.45);border-radius:24px;padding:32px 28px;box-shadow:0 4px 32px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden}
 .page-network::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.3) 0%,transparent 50%);pointer-events:none}
 .page-network h1{font-size:30px;font-weight:600;color:#1c1c1e;text-align:center;position:relative;z-index:1}
@@ -142,6 +158,9 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 @media(prefers-color-scheme:dark){
   body{background:#0d0d0f}
   .header h1{color:#f0f0f2}
+  .theme-switcher{background:rgba(44,44,48,.78);border-color:rgba(255,255,255,.12);box-shadow:0 4px 18px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08)}
+  .theme-choice{color:#8e8e93}
+  .theme-choice.active{color:#f0f0f2}
   .container{max-width:560px}
   /* 返回按钮 - 深色液态玻璃 */
   .back-btn{background:rgba(44,44,48,.72);border-color:rgba(255,255,255,.12);color:#f0f0f2;box-shadow:0 4px 20px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08),inset 0 -1px 0 rgba(255,255,255,.04)}
@@ -179,6 +198,7 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
   .download-area p{color:#6e6e73}
   .download-btn{background:rgba(240,240,242,.9);color:#1c1c1e;box-shadow:0 4px 16px rgba(0,0,0,.3)}
     /* 网络信息页面 */
+  .network-title-row .theme-toggle{background:rgba(44,44,48,.82);border-color:rgba(255,255,255,.12);color:#f0f0f2;box-shadow:0 4px 16px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.08)}
   .page-network{background:rgba(44,44,48,.65);border-color:rgba(255,255,255,.1);box-shadow:0 4px 32px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}
   .page-network::before{background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.05) 0%,transparent 50%)}
   .page-network h1{color:#f0f0f2}
@@ -226,6 +246,29 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
   .activation-input{background:rgba(30,30,34,.72);border-color:rgba(255,255,255,.1);color:#f0f0f2}
   .activation-submit{background:rgba(240,240,242,.9);color:#1c1c1e}.activation-close{color:#8e8e93}
 }
+
+/* 用户手动主题覆盖 */
+html[data-theme="dark"] body{background:#0d0d0f!important;color:#f0f0f2!important}
+html[data-theme="dark"] .header h1{color:#f0f0f2!important}
+html[data-theme="dark"] .glass-card{background:rgba(44,44,48,.65);border-color:rgba(255,255,255,.1);box-shadow:0 4px 24px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}
+html[data-theme="dark"] .glass-card::before{background:radial-gradient(ellipse at 30% 10%,rgba(255,255,255,.06) 0%,transparent 60%)}
+html[data-theme="dark"] .card-text{color:#f0f0f2}
+html[data-theme="dark"] .card-arrow{color:#6e6e73}
+html[data-theme="dark"] .icon-box{background:rgba(255,255,255,.08);color:#f0f0f2;border-color:rgba(255,255,255,.08)}
+html[data-theme="dark"] .page-network{background:rgba(44,44,48,.88);border-color:rgba(255,255,255,.12)}
+html[data-theme="dark"] .page-network h1{color:#f0f0f2}
+html[data-theme="dark"] .page-network .sub{color:#8e8e93}
+html[data-theme="dark"] .net-hero-card,html[data-theme="dark"] .net-info-item{background:rgba(44,44,48,.82);border-color:rgba(255,255,255,.12);box-shadow:0 4px 24px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.08)}
+html[data-theme="dark"] .net-hero-city,html[data-theme="dark"] .net-info-value{color:#f0f0f2}
+html[data-theme="dark"] .net-hero-detail,html[data-theme="dark"] .net-info-label{color:#8e8e93}
+html[data-theme="dark"] .net-info-icon{background:rgba(255,255,255,.08);color:#f0f0f2}
+html[data-theme="dark"] .theme-toggle{background:rgba(44,44,48,.88);border-color:rgba(255,255,255,.12);color:#f0f0f2}
+html[data-theme="light"] body{background:#f5f5f7!important;color:#1c1c1e!important}
+html[data-theme="light"] .header h1{color:#1c1c1e!important}
+html[data-theme="light"] .glass-card{background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.45);box-shadow:0 4px 24px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2)}
+html[data-theme="light"] .card-text{color:#1c1c1e}
+html[data-theme="light"] .icon-box{background:rgba(0,0,0,.04);color:#1c1c1e}
+html[data-theme="light"] .page-network{background:rgba(255,255,255,.72);border-color:rgba(255,255,255,.55)}
 </style>
 </head>
 <body>
@@ -243,7 +286,13 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 </div>
 <div class="container">
 <div id="page-home" class="page active">
-<div class="header"><h1>瞎玩的主页</h1></div>
+<div class="header"><h1>瞎玩的主页</h1><div class="theme-switcher" id="themeSwitcher" aria-label="主题模式选择">
+<div class="theme-slider" id="themeSlider"></div>
+<button class="theme-choice" data-theme-choice="dark" onclick="setThemeMode('dark')" aria-label="深色模式">☾</button>
+<button class="theme-choice" data-theme-choice="auto" onclick="setThemeMode('auto')" aria-label="自动模式">自动</button>
+<button class="theme-choice" data-theme-choice="light" onclick="setThemeMode('light')" aria-label="浅色模式">☀</button>
+</div></div>
+<div class="theme-icon-burst" id="themeIconBurst" aria-hidden="true"></div>
 <div class="card-grid">
 <div class="glass-card" onclick="showPage('hedian')"><div class="card-content"><div class="icon-box">核</div><span class="card-text">核电站模拟器</span><span class="card-arrow">→</span></div></div>
 <div class="glass-card" onclick="showPage('network')" id="networkCard"><div class="card-content"><div class="icon-box">网</div><span class="card-text">网络信息</span><span class="card-arrow">→</span></div></div>
@@ -309,7 +358,7 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 <!-- 网络信息页面 -->
 <div id="page-network" class="page page-network">
 <button class="back-btn" onclick="showPage('home')">← 返回</button>
-<h1>网络透视</h1>
+<div class="network-title-row"><h1>网络透视</h1><button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="切换深浅模式">☾ 深色</button></div>
 <!-- 位置大卡片 -->
 <div class="net-hero-card" id="netHero">
   <div class="net-hero-city loading" id="netHeroCity">定位中...</div>
@@ -338,6 +387,30 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
     <div class="net-info-icon">区</div>
     <div class="net-info-label">所在时区</div>
     <div class="net-info-value loading" id="netTz">加载中...</div>
+  </div>
+</div>
+<div class="net-info-row">
+  <div class="net-info-item">
+    <div class="net-info-icon">浏</div>
+    <div class="net-info-label">浏览器</div>
+    <div class="net-info-value" id="netBrowser">检测中...</div>
+  </div>
+  <div class="net-info-item">
+    <div class="net-info-icon">系</div>
+    <div class="net-info-label">操作系统</div>
+    <div class="net-info-value" id="netOs">检测中...</div>
+  </div>
+</div>
+<div class="net-info-row">
+  <div class="net-info-item">
+    <div class="net-info-icon">屏</div>
+    <div class="net-info-label">屏幕分辨率</div>
+    <div class="net-info-value" id="netScreen">检测中...</div>
+  </div>
+  <div class="net-info-item">
+    <div class="net-info-icon">语</div>
+    <div class="net-info-label">浏览器语言</div>
+    <div class="net-info-value" id="netLanguage">检测中...</div>
   </div>
 </div>
 <div style="text-align:center;margin-top:8px"><button class="refresh-btn" onclick="fetchNetworkInfo()">重新检测</button></div>
@@ -669,6 +742,65 @@ function initReactor() {
     [rodSlider, feedPressSlider, turbSlider, gridLoadSlider, pump1Btn, pump2Btn, gridConnBtn, az5Btn, eccsBtn].forEach(el => el.classList.add('disabled'));
     setInterval(simulate, 50);
 }
+// ========== 深浅模式 ==========
+var THEME_KEY = 'xw_theme';
+var themeModes = ['dark','auto','light'];
+function getEffectiveTheme(mode){
+    if(mode === 'auto') return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return mode;
+}
+function showThemeIcon(effective){
+    var el=document.getElementById('themeIconBurst');
+    if(!el) return;
+    el.textContent = effective === 'dark' ? '☾' : '☀';
+    el.classList.remove('show');
+    void el.offsetWidth;
+    el.classList.add('show');
+    setTimeout(function(){el.classList.remove('show')},760);
+}
+function applyThemeMode(mode, animate){
+    if(themeModes.indexOf(mode) === -1) mode='auto';
+    var effective=getEffectiveTheme(mode);
+    document.documentElement.setAttribute('data-theme', effective);
+    document.documentElement.setAttribute('data-theme-mode', mode);
+    var sw=document.getElementById('themeSwitcher');
+    var slider=document.getElementById('themeSlider');
+    if(sw) sw.classList.toggle('dark', effective === 'dark');
+    if(slider) slider.style.transform='translateX(' + (themeModes.indexOf(mode)*34) + 'px)';
+    document.querySelectorAll('.theme-choice').forEach(function(btn){btn.classList.toggle('active',btn.getAttribute('data-theme-choice')===mode)});
+    if(animate) showThemeIcon(effective);
+}
+function setThemeMode(mode){
+    localStorage.setItem(THEME_KEY,mode);
+    applyThemeMode(mode,true);
+}
+(function(){
+    var saved=localStorage.getItem(THEME_KEY);
+    applyThemeMode(themeModes.indexOf(saved)!==-1 ? saved : 'auto',false);
+    if(window.matchMedia){
+        var mq=window.matchMedia('(prefers-color-scheme: dark)');
+        var handler=function(){
+            if(localStorage.getItem(THEME_KEY)==='auto') applyThemeMode('auto',true);
+        };
+        if(mq.addEventListener) mq.addEventListener('change',handler);
+        else if(mq.addListener) mq.addListener(handler);
+    }
+})();
+
+function detectDeviceInfo() {
+    var ua = navigator.userAgent || '';
+    var browser = /Edg\//.test(ua) ? 'Microsoft Edge' : /Chrome\//.test(ua) ? 'Google Chrome' : /Firefox\//.test(ua) ? 'Mozilla Firefox' : /Safari\//.test(ua) ? 'Safari' : '未知浏览器';
+    var os = /Android/i.test(ua) ? 'Android' : /iPhone|iPad|iPod/i.test(ua) ? 'iOS' : /Windows/i.test(ua) ? 'Windows' : /Mac OS X/i.test(ua) ? 'macOS' : /Linux/i.test(ua) ? 'Linux' : '未知系统';
+    var screenText = (window.screen && screen.width && screen.height) ? window.screen.width + ' × ' + window.screen.height : '未知';
+    var lang = navigator.language || '未知';
+    document.getElementById('netBrowser').textContent = browser;
+    document.getElementById('netOs').textContent = os;
+    document.getElementById('netScreen').textContent = screenText;
+    document.getElementById('netLanguage').textContent = lang;
+}
+
+detectDeviceInfo();
+
 // ========== 网络信息 API 获取 ==========
 async function fetchNetworkInfo() {
     var heroCard = document.getElementById('netHero');
