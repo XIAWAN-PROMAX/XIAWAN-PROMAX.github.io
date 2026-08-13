@@ -25,8 +25,6 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
   @media(hover:hover){.glass-card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 40px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2)}}
 .card-content{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
 .pro-badge{font-size:11px;background:#c97d2b;color:#fff;padding:2px 10px;border-radius:30px;margin-left:auto;font-weight:500;white-space:nowrap}
-.pro-badge.trial{background:#5b8def;animation:badgePulse 2s ease-in-out infinite}
-@keyframes badgePulse{0%,100%{opacity:1}50%{opacity:.6}}
 .icon-box{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;background:rgba(0,0,0,.04);color:#1c1c1e;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3)}
 .card-text{font-size:17px;font-weight:450;color:#1c1c1e}
 .card-arrow{margin-left:auto;color:#c0c0c6;font-size:18px;transition:transform .3s ease}
@@ -47,10 +45,6 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 .about-glass .about-ver{font-size:17px;font-weight:600;color:#5c5c5e;letter-spacing:2px;position:relative;z-index:1;margin-bottom:4px}
 .about-glass .about-close{display:inline-block;margin-top:20px;padding:10px 32px;background:rgba(28,28,30,.88);color:#fff;border-radius:30px;border:none;font-size:15px;font-weight:500;cursor:pointer;position:relative;z-index:1;transition:transform .25s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .about-glass .about-close:active{transform:scale(.95)}
-.page-md3{background:rgba(255,255,255,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.45);border-radius:24px;padding:32px 28px;box-shadow:0 4px 32px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden}
-.page-md3::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.3) 0%,transparent 50%);pointer-events:none}
-.page-md3 h1{font-size:30px;font-weight:600;color:#1c1c1e;text-align:center;position:relative;z-index:1}
-.page-md3 .sub{text-align:center;color:#8e8e93;font-size:15px;margin-bottom:28px;position:relative;z-index:1}
 .feature{background:rgba(255,255,255,.3);backdrop-filter:blur(8px);padding:16px 20px;border-radius:14px;margin-bottom:12px;border:1px solid rgba(255,255,255,.3);transition:background .3s ease,transform .3s ease;position:relative;z-index:1}
 @media(hover:hover){.feature:hover{background:rgba(255,255,255,.45);transform:translateX(4px)}}
 .feature h3{font-size:17px;color:#1c1c1e;font-weight:500}
@@ -61,7 +55,6 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 .download-btn{display:inline-block;padding:14px 48px;background:rgba(28,28,30,.9);backdrop-filter:blur(8px);color:#fff;border-radius:30px;text-decoration:none;font-size:17px;font-weight:500;transition:transform .3s ease,box-shadow .3s ease;box-shadow:0 4px 16px rgba(28,28,30,.15);border:1px solid rgba(255,255,255,.1)}
 .download-btn:active{transform:scale(.96)}
 @media(hover:hover){.download-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(28,28,30,.2)}}
-.footer-md3{text-align:center;margin-top:20px;font-size:12px;color:#b8b8be;position:relative;z-index:1}
 .page-hedian{background:#000!important;border:none!important;border-radius:12px;padding:12px 10px;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 .page-hedian::before{display:none!important}
 .page-hedian .reactor-wrap{background:#050505;color:#e0e0e0;font-family:"Consolas","Microsoft Yahei",monospace;padding:10px;border-radius:8px;border:1px solid #2a2a2a}
@@ -125,8 +118,6 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 .container{max-width:95vw;padding:0 4px}
 .card-grid{flex-direction:row;flex-wrap:wrap;justify-content:center}
 .glass-card{flex:1 1 180px;min-width:140px}
-.page-md3{padding:20px 16px}
-.page-md3 h1{font-size:24px}
 .feature{padding:12px 14px}
 .download-btn{padding:10px 28px;font-size:15px}
 .page-hedian .reactor-wrap .grid-2col{grid-template-columns:1fr 1fr;gap:12px}
@@ -142,8 +133,6 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 .page-hedian .reactor-wrap .grid-2col{grid-template-columns:1fr 1fr;gap:20px}
 }
 @media(max-width:480px){
-.page-md3{padding:20px 16px}
-.page-md3 h1{font-size:24px}
 .feature{padding:12px 14px}
 .download-btn{padding:12px 28px;font-size:15px}
 .page-hedian{padding:6px 4px}
@@ -169,7 +158,6 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
   .card-arrow{color:#6e6e73}
   .icon-box{background:rgba(255,255,255,.08);color:#f0f0f2;border-color:rgba(255,255,255,.08)}
   .pro-badge{background:#e08d3c}
-  .pro-badge.trial{background:#5b8def}
   /* 页脚 */
   .footer{color:#6e6e73}
   .footer:hover{color:#9e9ea3}
@@ -181,21 +169,16 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
   .about-glass h2{color:#f0f0f2}
   .about-glass p{color:#b0b0b5}
   .about-glass .about-ver{color:#b0b0b5}
+  .about-glass .about-glass-log{color:#b0b0b5 !important}
   .about-glass .about-close{background:rgba(240,240,242,.9);color:#1c1c1e}
-  /* 麦地版小管家页面 */
-  .page-md3{background:rgba(44,44,48,.65);border-color:rgba(255,255,255,.1);box-shadow:0 4px 32px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}
-  .page-md3::before{background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.05) 0%,transparent 50%)}
-  .page-md3 h1{color:#f0f0f2}
-  .page-md3 .sub{color:#6e6e73}
-  .feature{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}
+          .feature{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}
   .feature h3{color:#f0f0f2}
   .feature p{color:#6e6e73}
   .download-area{border-color:rgba(255,255,255,.08)}
   .download-area h2{color:#f0f0f2}
   .download-area p{color:#6e6e73}
   .download-btn{background:rgba(240,240,242,.9);color:#1c1c1e;box-shadow:0 4px 16px rgba(0,0,0,.3)}
-  .footer-md3{color:#6e6e73}
-  /* 网络信息页面 */
+    /* 网络信息页面 */
   .page-network{background:rgba(44,44,48,.65);border-color:rgba(255,255,255,.1);box-shadow:0 4px 32px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06),inset 0 -1px 0 rgba(255,255,255,.02)}
   .page-network::before{background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.05) 0%,transparent 50%)}
   .page-network h1{color:#f0f0f2}
@@ -211,39 +194,63 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
   .net-info-value{color:#f0f0f2}
   .net-info-value.loading{color:#5e5e63}
   .refresh-btn{background:rgba(240,240,242,.9);color:#1c1c1e;box-shadow:0 4px 16px rgba(0,0,0,.3)}
-  /* 试用弹窗 */
-  .trial-glass{background:rgba(44,44,48,.88);border-color:rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
-  .trial-glass p{color:#b0b0b5}
+}
+
+/* 激活码入口与首次提示 */
+.activation-entry{position:fixed;top:14px;right:14px;z-index:9997;padding:8px 16px;background:rgba(255,255,255,.68);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.55);border-radius:30px;color:#1c1c1e;font-size:12px;font-weight:500;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.85),inset 0 -1px 0 rgba(255,255,255,.25);transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.activation-entry:active{transform:scale(.95)}
+@media(hover:hover){.activation-entry:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(0,0,0,.11),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(255,255,255,.3)}}
+.activation-entry.activated{cursor:default;opacity:.72}
+.first-activation-hint{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(14px);z-index:9996;padding:9px 16px;background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.5);border-radius:20px;color:#5c5c5e;font-size:12px;white-space:nowrap;box-shadow:0 6px 24px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.8);opacity:0;pointer-events:none;transition:opacity .45s ease,transform .45s ease;cursor:pointer}
+.first-activation-hint.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.activation-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:10002;align-items:center;justify-content:center;padding:20px}
+.activation-overlay.show{display:flex}
+.activation-glass{background:rgba(255,255,255,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.5);border-radius:24px;padding:32px 28px 26px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.7);position:relative;overflow:hidden;animation:aboutIn .35s cubic-bezier(.25,.1,.25,1)}
+.activation-glass::before{content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;background:radial-gradient(ellipse at 35% 15%,rgba(255,255,255,.5) 0%,rgba(201,125,43,.08) 40%,transparent 70%);pointer-events:none;animation:aboutFlow 6s ease-in-out infinite}
+.activation-glass h2,.activation-glass p,.activation-glass input,.activation-glass button{position:relative;z-index:1}
+.activation-glass h2{font-size:22px;font-weight:600;color:#1c1c1e;margin-bottom:8px}
+.activation-glass p{font-size:13px;color:#8e8e93;margin-bottom:18px}
+.activation-input{width:100%;padding:13px 15px;border-radius:14px;border:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.62);outline:none;color:#1c1c1e;font-size:15px;text-align:center;letter-spacing:1px;transition:border-color .25s,box-shadow .25s}
+.activation-input:focus{border-color:rgba(201,125,43,.45);box-shadow:0 0 0 3px rgba(201,125,43,.1)}
+.activation-submit{width:100%;margin-top:12px;padding:12px 20px;border:0;border-radius:30px;background:rgba(28,28,30,.9);color:#fff;font-size:15px;font-weight:500;cursor:pointer;transition:transform .25s ease}
+.activation-submit:active{transform:scale(.97)}
+.activation-close{margin-top:10px;padding:8px 20px;border:0;background:transparent;color:#8e8e93;font-size:13px;cursor:pointer}
+.activation-status{min-height:20px;margin-top:12px;font-size:13px;font-weight:500}
+.activation-status.success{color:#2f8f5b}.activation-status.error{color:#c45b4c}
+@media(prefers-color-scheme:dark){
+  .activation-entry{background:rgba(44,44,48,.78);border-color:rgba(255,255,255,.12);color:#f0f0f2;box-shadow:0 4px 18px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08),inset 0 -1px 0 rgba(255,255,255,.04)}
+  .first-activation-hint{background:rgba(44,44,48,.82);border-color:rgba(255,255,255,.12);color:#b0b0b5;box-shadow:0 6px 24px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.08)}
+  .activation-glass{background:rgba(44,44,48,.88);border-color:rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
+  .activation-glass::before{background:radial-gradient(ellipse at 35% 15%,rgba(255,255,255,.06) 0%,rgba(201,125,43,.12) 40%,transparent 70%)}
+  .activation-glass h2{color:#f0f0f2}.activation-glass p{color:#b0b0b5}
+  .activation-input{background:rgba(30,30,34,.72);border-color:rgba(255,255,255,.1);color:#f0f0f2}
+  .activation-submit{background:rgba(240,240,242,.9);color:#1c1c1e}.activation-close{color:#8e8e93}
 }
 </style>
 </head>
 <body>
+<button class="activation-entry" id="activationEntry" onclick="openActivation()">使用</button>
+<div class="first-activation-hint" id="firstActivationHint" onclick="openActivation()">已有激活码，开始激活</div>
+<div class="activation-overlay" id="activationOverlay" onclick="closeActivation(event)">
+  <div class="activation-glass" onclick="event.stopPropagation()">
+    <h2>激活瞎玩主页 Pro</h2>
+    <p>输入激活码即可使用全部功能</p>
+    <input class="activation-input" id="activationCode" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="请输入激活码" onkeydown="if(event.key==='Enter')activateCode()">
+    <button class="activation-submit" onclick="activateCode()">立即激活</button>
+    <div class="activation-status" id="activationStatus"></div>
+    <button class="activation-close" onclick="closeActivation()">关闭</button>
+  </div>
+</div>
 <div class="container">
 <div id="page-home" class="page active">
 <div class="header"><h1>瞎玩的主页</h1></div>
 <div class="card-grid">
-<div class="glass-card" onclick="showPage('md3')"><div class="card-content"><div class="icon-box">改</div><span class="card-text">麦地版小管家V2</span><span class="card-arrow">→</span></div></div>
 <div class="glass-card" onclick="showPage('hedian')"><div class="card-content"><div class="icon-box">核</div><span class="card-text">核电站模拟器</span><span class="card-arrow">→</span></div></div>
-<div class="glass-card" onclick="showPage('network')" id="networkCard"><div class="card-content"><div class="icon-box">网</div><span class="card-text">网络信息</span><span class="pro-badge trial" id="trialBadge" style="display:none">试用</span><span class="card-arrow">→</span></div></div>
+<div class="glass-card" onclick="showPage('network')" id="networkCard"><div class="card-content"><div class="icon-box">网</div><span class="card-text">网络信息</span><span class="card-arrow">→</span></div></div>
 </div>
 <div class="footer" onclick="openAbout()">由 <span>无隐创新</span> 提供技术支持</div>
 </div>
 
-<div id="page-md3" class="page page-md3">
-<button class="back-btn" onclick="showPage('home')">← 返回</button>
-<h1>定制版小管家</h1>
-<p class="sub">专为极致体验打造 · 个人定制版</p>
-<div class="feature"><h3>🎨 1. 更改图标</h3><p>更个性、更显眼的视觉标识。</p></div>
-<div class="feature"><h3>💬 2. 更改提示语</h3><p>使用体验更贴合你的习惯。</p></div>
-<div class="feature"><h3>🔑 3. 更改应用签名</h3><p>独立的签名版本，可与官方版共存。</p></div>
-<div class="feature"><h3>⚡ 4. 原生服务器运行</h3><p>除微信登录外，所有功能均可正常使用。</p></div>
-<div class="feature"><h3>📅 5. 活跃更新</h3><p>每周更新一次，及时优化体验。</p></div>
-<div class="download-area">
-<h2>立即下载</h2><p>无需微信登录，点此直接下载 APK</p>
-<a href="https://qfile.qq.com/q/jEK0ts9wAg" class="download-btn" target="_blank">📲 点击下载</a>
-</div>
-<div class="footer-md3">© 2026 定制版小管家 · CC BY-NC-SA 4.0</div>
-</div>
 
 <div id="page-hedian" class="page page-hedian">
 <button class="back-btn" onclick="showPage('home')">← 返回</button>
@@ -337,40 +344,19 @@ body{font-family:-apple-system,"PingFang SC","Helvetica Neue",system-ui,sans-ser
 <div class="footer" style="margin-top:24px;position:relative;z-index:1">由 <span>无隐创新</span> 提供计算服务</div>
 </div>
 
-<!-- 首次访问试用提示弹窗 -->
-<div id="trialWelcomeOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.55);z-index:10000;align-items:center;justify-content:center">
-<div style="background:rgba(255,255,255,.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-radius:24px;padding:32px 24px;max-width:360px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.15)">
-<div style="font-size:48px;margin-bottom:12px">🎉</div>
-<h2 style="font-size:22px;font-weight:600;color:#1c1c1e;margin-bottom:8px">Pro功能体验</h2>
-<p style="font-size:15px;color:#8e8e93;margin-bottom:20px">网络信息是Pro版专属功能。<br>你可以免费体验 <b style="color:#5b8def">2天</b>，到期后该功能将锁定。<br>其他功能不受影响，请放心使用。</p>
-<button onclick="dismissTrialWelcome()" style="display:inline-block;padding:12px 36px;background:rgba(28,28,30,.9);color:#fff;border-radius:30px;border:none;font-size:16px;font-weight:500;cursor:pointer">开始体验</button>
-<p style="font-size:12px;color:#c0c0c6;margin-top:16px">Pro激活功能即将上线，敬请期待</p>
-</div>
-</div>
-
-<!-- 试用到期温和提示弹窗 -->
-<div id="trialExpiredOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center">
-<div style="background:rgba(255,255,255,.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-radius:24px;padding:32px 24px;max-width:360px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.15)">
-<div style="font-size:48px;margin-bottom:12px">⏰</div>
-<h2 style="font-size:22px;font-weight:600;color:#1c1c1e;margin-bottom:8px">试用期已结束</h2>
-<p style="font-size:15px;color:#8e8e93;margin-bottom:20px">网络信息功能需要Pro版才能继续使用。<br>其他功能不受影响，请放心使用。</p>
-<button onclick="document.getElementById('trialExpiredOverlay').style.display='none'" style="display:inline-block;padding:12px 36px;background:rgba(28,28,30,.9);color:#fff;border-radius:30px;border:none;font-size:16px;font-weight:500;cursor:pointer">我知道了</button>
-<p style="font-size:12px;color:#c0c0c6;margin-top:16px">Pro激活功能即将上线，敬请期待</p>
-</div>
-</div>
-
 <!-- 关于弹窗 -->
 <div class="about-overlay" id="aboutOverlay" onclick="closeAbout(event)">
 <div class="about-glass" onclick="event.stopPropagation()">
 <h2>关于我们</h2>
 <p>Hello，我是瞎玩。感谢你来看我的个人主页。<br>这个项目目前被放置于 GitHub 托管，<br>你可以去给我点个 Star，谢谢。</p>
-<div class="about-ver">v2.5</div>
+<div class="about-ver">v2.6</div>
+<div class="about-glass-log" style="font-size:14px;color:#5c5c5e;line-height:1.7;text-align:left;position:relative;z-index:1;margin:16px 0 4px">
+<strong>更新日志</strong><br>
+v2.6：移除试用机制，新增激活码功能。
+</div>
 <button class="about-close" onclick="closeAbout()">好的</button>
 </div>
 </div>
-
-<!-- 右上角试用倒计时 -->
-<div id="trialCountdown" style="display:none;position:fixed;top:12px;right:12px;background:rgba(91,141,239,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;z-index:9998;box-shadow:0 2px 12px rgba(91,141,239,.3);animation:badgePulse 2s ease-in-out infinite">试用剩余：--</div>
 
 <script>
 // ========== 关于弹窗 ==========
@@ -384,13 +370,8 @@ function closeAbout(e) {
 
 // 页面切换
 function showPage(name) {
-    // 试用检查：访问网络信息页面时验证是否到期
-    if (name === 'network') {
-        if (!checkTrialAccess()) return;
-    }
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     if (name === 'home') document.getElementById('page-home').classList.add('active');
-    else if (name === 'md3') document.getElementById('page-md3').classList.add('active');
     else if (name === 'hedian') {
         document.getElementById('page-hedian').classList.add('active');
         setTimeout(initReactor, 100);
@@ -782,120 +763,78 @@ async function fetchNetworkInfo() {
 }
 
 
-// ========== 试用机制 ==========
-var TRIAL_KEY = 'xw_trial_start';
-var TRIAL_HOURS = 48; // 2天 = 48小时
-var trialTimer = null;
+// ========== 激活码机制 ==========
+var ACTIVATION_KEY = 'xw_activated';
+var FIRST_VISIT_KEY = 'xw_activation_hint_seen';
+var VALID_CODES = ['XIAWAN2026', 'XIAWANPRO', 'XW2026'];
 
-function getTrialStart() {
-    var v = localStorage.getItem(TRIAL_KEY);
-    return v ? parseInt(v) : 0;
+function isActivated() {
+    return localStorage.getItem(ACTIVATION_KEY) === '1';
 }
 
-function setTrialStart(ts) {
-    localStorage.setItem(TRIAL_KEY, ts);
-}
-
-function trialRemainingMs() {
-    var start = getTrialStart();
-    if (!start) return -1; // 未开始
-    var end = start + TRIAL_HOURS * 60 * 60 * 1000;
-    return Math.max(0, end - Date.now());
-}
-
-function isTrialExpired() {
-    var start = getTrialStart();
-    if (!start) return false;
-    return trialRemainingMs() <= 0;
-}
-
-// 首次打开页面时调用
-function initTrial() {
-    var badge = document.getElementById('trialBadge');
-    var countdown = document.getElementById('trialCountdown');
-    var start = getTrialStart();
-    if (!start) {
-        // 全新用户：显示欢迎弹窗
-        document.getElementById('trialWelcomeOverlay').style.display = 'flex';
-        // 点击"开始体验"后记录开始时间
-        return;
+function updateActivationUI() {
+    var entry = document.getElementById('activationEntry');
+    var hint = document.getElementById('firstActivationHint');
+    if (isActivated()) {
+        entry.textContent = '已激活';
+        entry.classList.add('activated');
+        entry.onclick = null;
+        if (hint) hint.classList.remove('show');
+    } else {
+        entry.textContent = '使用';
+        entry.classList.remove('activated');
+        entry.onclick = openActivation;
     }
-    if (isTrialExpired()) {
-        // 已到期：隐藏试用标签和倒计时
-        if (badge) badge.style.display = 'none';
-        if (countdown) countdown.style.display = 'none';
-        return;
-    }
-    // 试用中：显示标签和倒计时
-    if (badge) badge.style.display = 'inline-block';
-    if (countdown) countdown.style.display = 'block';
-    startCountdownUI();
 }
 
-// 用户在欢迎弹窗点击"开始体验"
-function dismissTrialWelcome() {
-    setTrialStart(Date.now());
-    document.getElementById('trialWelcomeOverlay').style.display = 'none';
-    var badge = document.getElementById('trialBadge');
-    var countdown = document.getElementById('trialCountdown');
-    if (badge) badge.style.display = 'inline-block';
-    if (countdown) countdown.style.display = 'block';
-    startCountdownUI();
-    // 自动打开网络信息页面开始体验
-    showPage('network');
+function openActivation() {
+    if (isActivated()) return;
+    var overlay = document.getElementById('activationOverlay');
+    var input = document.getElementById('activationCode');
+    var status = document.getElementById('activationStatus');
+    overlay.classList.add('show');
+    status.textContent = '';
+    status.className = 'activation-status';
+    setTimeout(function(){ input.focus(); }, 60);
 }
 
-// 右上角倒计时更新
-function startCountdownUI() {
-    var countdown = document.getElementById('trialCountdown');
-    if (!countdown) return;
-    if (trialTimer) clearInterval(trialTimer);
-    function tick() {
-        var remain = trialRemainingMs();
-        if (remain <= 0) {
-            countdown.textContent = '试用已到期';
-            countdown.style.background = 'rgba(201,125,43,.92)';
-            clearInterval(trialTimer);
-            trialTimer = null;
-            // 如果正在网络信息页面，弹出到期提示
-            var netPage = document.getElementById('page-network');
-            if (netPage && netPage.classList.contains('active')) {
-                document.getElementById('trialExpiredOverlay').style.display = 'flex';
-                showPage('home');
-            }
-            document.getElementById('trialBadge').style.display = 'none';
-            setTimeout(function() { countdown.style.display = 'none'; }, 3000);
-            return;
-        }
-        var h = Math.floor(remain / 3600000);
-        var m = Math.floor((remain % 3600000) / 60000);
-        var s = Math.floor((remain % 60000) / 1000);
-        countdown.textContent = '试用剩余：' + h + '时' + m + '分' + s + '秒';
-    }
-    tick();
-    trialTimer = setInterval(tick, 1000);
+function closeActivation(e) {
+    if (e && e.target !== document.getElementById('activationOverlay')) return;
+    document.getElementById('activationOverlay').classList.remove('show');
 }
 
-// 访问网络信息时的门卫检查
-function checkTrialAccess() {
-    var start = getTrialStart();
-    if (!start) {
-        // 还没点过"开始体验"，弹出欢迎弹窗
-        document.getElementById('trialWelcomeOverlay').style.display = 'flex';
-        return false;
+function activateCode() {
+    var input = document.getElementById('activationCode');
+    var status = document.getElementById('activationStatus');
+    var code = input.value.trim().toUpperCase();
+    if (VALID_CODES.indexOf(code) !== -1) {
+        localStorage.setItem(ACTIVATION_KEY, '1');
+        status.textContent = '✓ 激活成功，欢迎使用！';
+        status.className = 'activation-status success';
+        input.disabled = true;
+        updateActivationUI();
+        setTimeout(function(){ document.getElementById('activationOverlay').classList.remove('show'); input.disabled = false; input.value = ''; }, 1000);
+    } else {
+        status.textContent = '激活码错误';
+        status.className = 'activation-status error';
+        input.focus();
     }
-    if (isTrialExpired()) {
-        document.getElementById('trialExpiredOverlay').style.display = 'flex';
-        return false;
-    }
-    return true;
 }
 
-// 页面加载时初始化试用
+function initActivation() {
+    updateActivationUI();
+    if (!isActivated() && !localStorage.getItem(FIRST_VISIT_KEY)) {
+        localStorage.setItem(FIRST_VISIT_KEY, '1');
+        var hint = document.getElementById('firstActivationHint');
+        setTimeout(function(){ hint.classList.add('show'); }, 500);
+        setTimeout(function(){ hint.classList.remove('show'); }, 5000);
+    }
+}
+
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTrial);
+    document.addEventListener('DOMContentLoaded', initActivation);
 } else {
-    initTrial();
+    initActivation();
 }
 </script>
 </body>
