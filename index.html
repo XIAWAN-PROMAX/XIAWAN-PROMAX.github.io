@@ -269,6 +269,89 @@ html[data-theme="light"] .glass-card{background:rgba(255,255,255,.55);border-col
 html[data-theme="light"] .card-text{color:#1c1c1e}
 html[data-theme="light"] .icon-box{background:rgba(0,0,0,.04);color:#1c1c1e}
 html[data-theme="light"] .page-network{background:rgba(255,255,255,.72);border-color:rgba(255,255,255,.55)}
+
+/* Remove browser tap/focus blue outline */
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+button:focus, button:focus-visible,
+a:focus, a:focus-visible,
+input:focus, input:focus-visible,
+select:focus, select:focus-visible,
+textarea:focus, textarea:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ========== 中鸣介绍 / E7 沉浸式页面 ========== */
+.page-zm,.page-zm-e,.page-zm-e7{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  max-width:none!important;
+  height:100dvh;
+  min-height:100vh;
+  margin:0!important;
+  padding:0!important;
+  background:#050505!important;
+  color:#f5f5f7!important;
+  border:none!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.zm-hero{min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:78px 20px 36px}
+.zm-kicker{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#8e8e93;margin-bottom:18px}
+.zm-hero h1{font-size:clamp(44px,12vw,84px);line-height:.95;letter-spacing:-4px;margin:0 0 20px;font-weight:700;background:linear-gradient(110deg,#fff,#9fd7ff 45%,#7c5cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.zm-hero p{font-size:16px;line-height:1.8;color:#a1a1a6;max-width:560px;margin:0}
+.zm-choice{padding:12px 18px 60px;display:flex;justify-content:center}
+.zm-choice-card{position:relative;overflow:hidden;max-width:720px;width:100%;padding:52px 32px;border-radius:32px;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.11);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 30px 80px rgba(0,0,0,.28);cursor:pointer;transition:transform .7s cubic-bezier(.2,.8,.2,1),border-color .5s ease}
+.zm-choice-card:before{display:none!important}
+.zm-choice-card:hover{transform:translateY(-6px) scale(1.01);border-color:rgba(255,255,255,.2)}
+.zm-choice-card h2{position:relative;font-size:42px;letter-spacing:-2px;margin:0 0 12px}
+.zm-choice-card p{position:relative;color:#9b9ba0;font-size:15px;line-height:1.8;margin:0}
+.zm-orb{display:none!important}
+.zm-footnote{text-align:center;color:#66666c;font-size:11px;padding:20px 20px 40px}
+
+.zm-e7-card{max-width:780px}
+.e7-page-wrap{background:#000}
+.zm-e7-hero{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 50px;position:relative;overflow:hidden}
+.zm-e7-hero:before{display:none!important}
+.e7-eyebrow,.e7-title,.e7-subtitle,.e7-hero-copy{position:relative;z-index:1}
+.e7-eyebrow{font-size:12px;letter-spacing:5px;color:#8e8e93;margin-bottom:18px}
+.e7-title{font-size:clamp(90px,25vw,190px);font-weight:700;line-height:.8;letter-spacing:-10px;background:linear-gradient(180deg,#fff 20%,#a9b6ca 65%,#5d78a5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.e7-subtitle{font-size:clamp(28px,7vw,52px);font-weight:600;letter-spacing:-2px;margin-top:20px}
+.e7-hero-copy{max-width:650px;color:#8e8e93;font-size:15px;line-height:1.9;margin-top:22px}
+.e7-section{padding:150px 20px;position:relative;max-width:1100px;margin:0 auto}
+.e7-center{text-align:center}
+.e7-section h2{font-size:clamp(40px,8vw,78px);letter-spacing:-4px;line-height:1.08;margin:12px 0 22px}
+.e7-section p{max-width:660px;margin:0 auto;color:#8e8e93;line-height:1.9;font-size:15px}
+.e7-gradient-title{background:linear-gradient(100deg,#ffb22e,#ff6b6b,#55a8ff,#8a6cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.e7-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:60px}
+.e7-stat{padding:34px 20px;border-radius:26px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.e7-stat strong{display:block;font-size:38px;letter-spacing:-2px}
+.e7-stat span{display:block;margin-top:8px;color:#8e8e93;font-size:12px}
+.e7-modules{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:58px}
+.e7-module{min-height:250px;padding:34px;border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.09);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;position:relative}
+.e7-module:before{content:"";position:absolute;width:230px;height:230px;right:-70px;top:-70px;background:radial-gradient(circle,rgba(72,135,255,.18),transparent 70%);filter:blur(8px)}
+.e7-module h3{position:relative;font-size:26px;margin:0 0 10px;letter-spacing:-1px}
+.e7-module p{position:relative;text-align:left;margin:0;max-width:none;font-size:13px}
+.e7-quote{font-size:clamp(28px,6vw,58px)!important;line-height:1.25!important;color:#f5f5f7!important;letter-spacing:-2px}
+.e7-final{padding:170px 20px 120px;text-align:center;max-width:900px;margin:auto}
+.e7-final h2{font-size:clamp(48px,10vw,96px);letter-spacing:-5px;line-height:1.02;margin:14px 0 24px}
+.e7-final p{color:#8e8e93;line-height:1.8;max-width:580px;margin:auto}
+.e7-disclaimer{margin-top:28px;color:#55555b;font-size:11px;line-height:1.7}
+.reveal{opacity:0;transform:translateY(34px);filter:blur(8px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1),filter 1s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:none;filter:none}
+@keyframes e7Glow{from{transform:scale(.92);opacity:.65}to{transform:scale(1.08);opacity:1}}
+@media(max-width:680px){
+ .e7-stat-grid,.e7-modules{grid-template-columns:1fr}
+ .e7-section{padding:110px 18px}
+ .zm-choice-card{padding:42px 24px}
+}
+
 </style>
 </head>
 <body>
@@ -294,12 +377,109 @@ html[data-theme="light"] .page-network{background:rgba(255,255,255,.72);border-c
 </div></div>
 <div class="theme-icon-burst" id="themeIconBurst" aria-hidden="true"></div>
 <div class="card-grid">
+<div class="glass-card" onclick="showPage('zhongming')"><div class="card-content"><div class="icon-box">中</div><span class="card-text">中鸣介绍</span><span class="card-arrow">→</span></div></div>
 <div class="glass-card" onclick="showPage('hedian')"><div class="card-content"><div class="icon-box">核</div><span class="card-text">核电站模拟器</span><span class="card-arrow">→</span></div></div>
 <div class="glass-card" onclick="showPage('network')" id="networkCard"><div class="card-content"><div class="icon-box">网</div><span class="card-text">网络信息</span><span class="card-arrow">→</span></div></div>
 </div>
 <div class="footer" onclick="openAbout()">由 <span>无隐创新</span> 提供技术支持</div>
 </div>
 
+
+<div id="page-zhongming" class="page page-zm">
+<button class="back-btn" onclick="showPage('home')">← 返回</button>
+<section class="zm-hero">
+  <div class="zm-kicker">ZMRobo · ROBOTICS</div>
+  <h1>中鸣介绍</h1>
+  <p>探索中鸣机器人产品体系。<br>从 E 系列开始，进入创新风暴。</p>
+</section>
+<div class="zm-choice">
+  <div class="zm-choice-card" onclick="showPage('zhongming-e')">
+    <div class="zm-kicker">E SERIES</div>
+    <h2>E系列</h2>
+    <p>面向机器人创作与编程学习的产品系列。</p>
+  </div>
+</div>
+<div class="zm-footnote">本页面为「瞎玩」制作的第三方产品介绍页面，仅用于产品信息展示。</div>
+</div>
+
+<div id="page-zhongming-e" class="page page-zm-e">
+<button class="back-btn" onclick="showPage('zhongming')">← 返回</button>
+<section class="zm-hero" style="padding-top:62px">
+  <div class="zm-kicker">E SERIES</div>
+  <h1>E系列</h1>
+  <p>选择一款产品，继续探索。</p>
+</section>
+<div class="zm-choice">
+  <div class="zm-choice-card zm-e7-card" onclick="showPage('e7')">
+    <div class="zm-kicker">E7 · INNOVATION STORM</div>
+    <h2>创新风暴</h2>
+    <p>机器人、视觉与编程，汇聚在一套完整的创作平台。</p>
+  </div>
+</div>
+<div class="zm-footnote">产品名称及相关资料来自中鸣官方公开信息。</div>
+</div>
+
+<div id="page-e7" class="page page-zm-e7">
+<button class="back-btn" onclick="showPage('zhongming-e')">← 返回</button>
+<section class="zm-e7-hero">
+  <div class="e7-eyebrow reveal">ZMRobo · E7</div>
+  <div class="e7-title reveal">E7</div>
+  <div class="e7-subtitle reveal">创新风暴机器人</div>
+  <div class="e7-hero-copy reveal">把机器人、智能视觉、传感器与编程创作放进同一套系统。先不急着看参数，跟着页面往下走。</div>
+</section>
+
+<section class="e7-section e7-center">
+  <div class="reveal">
+    <div class="zm-kicker">ONE PLATFORM</div>
+    <h2>一套机器人，<br><span class="e7-gradient-title">打开更多可能。</span></h2>
+    <p>从基础结构到智能模块，从图形化编程到更专业的开发方式，让创意从屏幕里走到现实。</p>
+  </div>
+  <div class="e7-stat-grid">
+    <div class="e7-stat reveal"><strong>79</strong><span>种积木</span></div>
+    <div class="e7-stat reveal"><strong>428</strong><span>配件</span></div>
+    <div class="e7-stat reveal"><strong>32</strong><span>节课程</span></div>
+  </div>
+</section>
+
+<section class="e7-section">
+  <div class="reveal">
+    <div class="zm-kicker">THE CORE</div>
+    <h2>从控制开始。</h2>
+    <p>核心控制器承担连接、控制与扩展，让各种模块在同一套系统里协同工作。</p>
+  </div>
+  <div class="e7-modules">
+    <div class="e7-module reveal"><h3>E7 控制器</h3><p>Cortex M7、3.2 英寸电容屏、蓝牙 5.0、Wi‑Fi 2.4G 等官方页面展示的核心配置。</p></div>
+    <div class="e7-module reveal"><h3>2.0 AI视觉模块</h3><p>官方页面展示的 AI 视觉模块，包含电容触碰屏、语音识别、图像学习与视觉识别等能力。</p></div>
+    <div class="e7-module reveal"><h3>多种传感器</h3><p>光电、触碰、激光测距、姿态等模块，让机器人能够感知环境并获得反馈。</p></div>
+    <div class="e7-module reveal"><h3>驱动与执行</h3><p>大型减速电机、数字舵机和彩灯等模块，为结构搭建与机器人运动提供执行能力。</p></div>
+  </div>
+</section>
+
+<section class="e7-section e7-center">
+  <div class="reveal">
+    <div class="zm-kicker">CREATE</div>
+    <h2 class="e7-quote">“让 AI 教育变得更简单、更生动——从想法到实现，一步到位。”</h2>
+    <p>官方页面展示了图形化编程与更专业的开发方式，让不同阶段的创作者都能从自己的方式开始。</p>
+  </div>
+</section>
+
+<section class="e7-section e7-center">
+  <div class="reveal">
+    <div class="zm-kicker">BUILD SOMETHING</div>
+    <h2>同一套积木，<br>不止一种答案。</h2>
+    <p>从机器人本体，到不同结构和运动形态，E7 将搭建自由度留给创作者。</p>
+  </div>
+</section>
+
+<section class="e7-final">
+  <div class="reveal">
+    <div class="zm-kicker">E7 · INNOVATION STORM</div>
+    <h2>让想法<br>开始运动。</h2>
+    <p>这是「瞎玩」制作的第三方产品介绍。更多信息请以中鸣官方公开资料为准。</p>
+    <div class="e7-disclaimer">本页面为第三方介绍，与中鸣机器人官方无直接关联。<br>目前不代表「瞎玩」已经落地任何 E7 成品化方案。</div>
+  </div>
+</section>
+</div>
 
 <div id="page-hedian" class="page page-hedian">
 <button class="back-btn" onclick="showPage('home')">← 返回</button>
@@ -422,10 +602,10 @@ html[data-theme="light"] .page-network{background:rgba(255,255,255,.72);border-c
 <div class="about-glass" onclick="event.stopPropagation()">
 <h2>关于我们</h2>
 <p>Hello，我是瞎玩。感谢你来看我的个人主页。<br>这个项目目前被放置于 GitHub 托管，<br>你可以去给我点个 Star，谢谢。</p>
-<div class="about-ver">v2.6</div>
+<div class="about-ver">v2.8</div>
 <div class="about-glass-log" style="font-size:14px;color:#5c5c5e;line-height:1.7;text-align:left;position:relative;z-index:1;margin:16px 0 4px">
 <strong>更新日志</strong><br>
-v2.6：移除试用机制，新增激活码功能。
+v2.8：新增中鸣介绍 · E系列 / E7 创新风暴沉浸式介绍；修复激活状态校验，未激活时无法进入功能页面。
 </div>
 <button class="about-close" onclick="closeAbout()">好的</button>
 </div>
@@ -443,8 +623,20 @@ function closeAbout(e) {
 
 // 页面切换
 function showPage(name) {
+    // 首页公开；所有功能/内容页面必须先激活。
+    if (name !== 'home' && !isActivated()) {
+        openActivation('use');
+        return false;
+    }
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    window.scrollTo({top:0,behavior:'auto'});
     if (name === 'home') document.getElementById('page-home').classList.add('active');
+    else if (name === 'zhongming') document.getElementById('page-zhongming').classList.add('active');
+    else if (name === 'zhongming-e') document.getElementById('page-zhongming-e').classList.add('active');
+    else if (name === 'e7') {
+        document.getElementById('page-e7').classList.add('active');
+        initE7Animations();
+    }
     else if (name === 'hedian') {
         document.getElementById('page-hedian').classList.add('active');
         setTimeout(initReactor, 100);
@@ -453,6 +645,7 @@ function showPage(name) {
         document.getElementById('page-network').classList.add('active');
         fetchNetworkInfo();
     }
+    return true;
 }
 
 // 卡片点击弹起动画（点击时轻轻弹起再回落）
@@ -468,6 +661,7 @@ document.querySelectorAll('.glass-card').forEach(function(card) {
 let reactorInited = false;
 
 function initReactor() {
+    if (!isActivated()) return;
     if (reactorInited) return;
     reactorInited = true;
 
@@ -803,6 +997,7 @@ detectDeviceInfo();
 
 // ========== 网络信息 API 获取 ==========
 async function fetchNetworkInfo() {
+    if (!isActivated()) return;
     var heroCard = document.getElementById('netHero');
     var heroCity = document.getElementById('netHeroCity');
     var heroDetail = document.getElementById('netHeroDetail');
@@ -895,6 +1090,28 @@ async function fetchNetworkInfo() {
 }
 
 
+// ========== E7 滚动动画 ==========
+function initE7Animations() {
+    var page = document.getElementById('page-e7');
+    if (!page) return;
+    var items = page.querySelectorAll('.reveal');
+    items.forEach(function(el){ el.classList.remove('visible'); });
+    setTimeout(function(){
+        var observer = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {threshold:0.12});
+        items.forEach(function(el){ observer.observe(el); });
+        page.querySelectorAll('.reveal').forEach(function(el, i){
+            if (i < 4) setTimeout(function(){el.classList.add('visible');}, 120 + i*120);
+        });
+    }, 30);
+}
+
 // ========== 激活码机制 ==========
 var ACTIVATION_KEY = 'xw_activated';
 var FIRST_VISIT_KEY = 'xw_activation_hint_seen';
@@ -955,11 +1172,18 @@ function activateCode() {
 
 function initActivation() {
     updateActivationUI();
+    // 未激活时强制隐藏所有非首页页面，避免历史 DOM 状态绕过 showPage。
+    if (!isActivated()) {
+        document.querySelectorAll('.page:not(#page-home)').forEach(function(p){ p.classList.remove('active'); });
+        document.getElementById('page-home').classList.add('active');
+    }
     if (!isActivated() && !localStorage.getItem(FIRST_VISIT_KEY)) {
         localStorage.setItem(FIRST_VISIT_KEY, '1');
         var hint = document.getElementById('firstActivationHint');
-        setTimeout(function(){ hint.classList.add('show'); }, 500);
-        setTimeout(function(){ hint.classList.remove('show'); }, 5000);
+        if (hint) {
+            setTimeout(function(){ hint.classList.add('show'); }, 500);
+            setTimeout(function(){ hint.classList.remove('show'); }, 5000);
+        }
     }
 }
 
@@ -968,6 +1192,15 @@ if (document.readyState === 'loading') {
 } else {
     initActivation();
 }
+window.addEventListener('storage', function(e){
+    if(e.key === ACTIVATION_KEY){
+        updateActivationUI();
+        if(!isActivated()){
+            document.querySelectorAll('.page:not(#page-home)').forEach(function(p){p.classList.remove('active');});
+            document.getElementById('page-home').classList.add('active');
+        }
+    }
+});
 </script>
 </body>
 </html>
