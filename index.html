@@ -284,7 +284,7 @@ textarea:focus, textarea:focus-visible {
 }
 
 /* ========== 中鸣介绍 / E7 沉浸式页面 ========== */
-.page-zm,.page-zm-e,.page-zm-e7{
+.page-zm,.page-zm-e,.page-zm-e7,.page-zm-smart{
   position:fixed;
   inset:0;
   width:100vw;
@@ -346,6 +346,40 @@ textarea:focus, textarea:focus-visible {
 .reveal{opacity:0;transform:translateY(34px);filter:blur(8px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1),filter 1s cubic-bezier(.2,.8,.2,1)}
 .reveal.visible{opacity:1;transform:none;filter:none}
 @keyframes e7Glow{from{transform:scale(.92);opacity:.65}to{transform:scale(1.08);opacity:1}}
+
+/* 智能风暴 · JMC-NY-2108+ */
+.page-zm-smart{background:#050505!important;color:#f5f5f7!important}
+.smart-hero{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 22px 50px;position:relative}
+.smart-model{font-size:11px;letter-spacing:5px;color:#8e8e93;margin-bottom:24px;text-transform:uppercase}
+.smart-title{font-size:clamp(54px,13vw,110px);letter-spacing:-6px;line-height:.98;margin:0;font-weight:700;background:linear-gradient(110deg,#fff,#d8e8ff 48%,#9aa8bb);-webkit-background-clip:text;background-clip:text;color:transparent}
+.smart-subtitle{margin-top:20px;font-size:clamp(19px,4.8vw,30px);color:#d7d7dc;letter-spacing:-1px}
+.smart-lead{max-width:700px;margin:24px auto 0;color:#8e8e93;line-height:1.9;font-size:14px}
+.smart-section{max-width:1100px;margin:0 auto;padding:145px 22px;position:relative}
+.smart-section.center{text-align:center}
+.smart-kicker{font-size:11px;letter-spacing:4px;color:#8e8e93;text-transform:uppercase;margin-bottom:16px}
+.smart-section h2{font-size:clamp(38px,8vw,72px);letter-spacing:-4px;line-height:1.08;margin:0 0 22px}
+.smart-section p{color:#8e8e93;line-height:1.9;font-size:14px;max-width:720px;margin:0 auto}
+.smart-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:58px}
+.smart-card{padding:34px;border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.07);min-height:210px}
+.smart-card h3{font-size:24px;letter-spacing:-1px;margin:0 0 14px}
+.smart-card p,.smart-card li{font-size:13px;color:#8e8e93;line-height:1.9}
+.smart-card ul{padding-left:18px;margin:0}
+.smart-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:52px}
+.smart-feature{padding:25px 20px;border-radius:22px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.075)}
+.smart-feature strong{display:block;font-size:17px;margin-bottom:8px}
+.smart-feature span{font-size:12px;color:#8e8e93;line-height:1.7}
+.smart-ext{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:46px}
+.smart-pill{padding:11px 15px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(255,255,255,.045);color:#c8c8cc;font-size:12px}
+.smart-final{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 22px}
+.smart-final h2{font-size:clamp(48px,10vw,92px);letter-spacing:-5px;line-height:1.02;margin:0 0 24px}
+.smart-note{max-width:620px;margin:auto;color:#55555b;font-size:11px;line-height:1.8}
+@media(max-width:680px){
+ .smart-grid{grid-template-columns:1fr}
+ .smart-feature-grid{grid-template-columns:1fr 1fr}
+ .smart-section{padding:110px 18px}
+ .smart-card{min-height:auto}
+}
+
 @media(max-width:680px){
  .e7-stat-grid,.e7-modules{grid-template-columns:1fr}
  .e7-section{padding:110px 18px}
@@ -409,11 +443,16 @@ textarea:focus, textarea:focus-visible {
   <h1>E系列</h1>
   <p>选择一款产品，继续探索。</p>
 </section>
-<div class="zm-choice">
+<div class="zm-choice" style="flex-direction:column;align-items:center;gap:16px">
   <div class="zm-choice-card zm-e7-card" onclick="showPage('e7')">
     <div class="zm-kicker">E7 · INNOVATION STORM</div>
     <h2>创新风暴</h2>
     <p>机器人、视觉与编程，汇聚在一套完整的创作平台。</p>
+  </div>
+  <div class="zm-choice-card zm-e7-card" onclick="showPage('smart-storm')">
+    <div class="zm-kicker">JMC-NY-2108+</div>
+    <h2>智能风暴</h2>
+    <p>面向7岁以上学龄群体，以项目式学习实现编程与AI知识启蒙。</p>
   </div>
 </div>
 <div class="zm-footnote">产品名称及相关资料来自中鸣官方公开信息。</div>
@@ -478,6 +517,84 @@ textarea:focus, textarea:focus-visible {
     <p>这是「瞎玩」制作的第三方产品介绍。更多信息请以中鸣官方公开资料为准。</p>
     <div class="e7-disclaimer">本页面为第三方介绍，与中鸣机器人官方无直接关联。<br>目前不代表「瞎玩」已经落地任何 E7 成品化方案。</div>
   </div>
+</section>
+</div>
+
+
+<div id="page-smart-storm" class="page page-zm-smart">
+<button class="back-btn" onclick="showPage('zhongming-e')">← 返回</button>
+
+<section class="smart-hero">
+  <div class="smart-model reveal">JMC-NY-2108+</div>
+  <h1 class="smart-title reveal">智能风暴</h1>
+  <div class="smart-subtitle reveal">中鸣自主研发的教育机器人套装</div>
+  <p class="smart-lead reveal">集合编程应用、人工智能启蒙、机器人竞赛功能于一体，面向7岁以上学龄群体，以项目式学习实现编程与AI知识启蒙。</p>
+</section>
+
+<section class="smart-section center">
+  <div class="reveal"><div class="smart-kicker">E6 · CORE</div><h2>E6主控核心</h2><p>采用32位ARM Cortex-M4芯片（STM32F407系列），性能可支撑基础AI算法运行；配备≥2.4英寸高清彩色液晶触屏，支持中文显示，并内置程序存储器与MP3播放器。</p></div>
+  <div class="smart-feature-grid">
+    <div class="smart-feature reveal"><strong>32位 ARM Cortex-M4</strong><span>STM32F407系列芯片。</span></div>
+    <div class="smart-feature reveal"><strong>≥2.4英寸高清彩屏</strong><span>彩色液晶触屏，支持中文显示。</span></div>
+    <div class="smart-feature reveal"><strong>程序存储与 MP3</strong><span>内置程序存储器与MP3播放器。</span></div>
+    <div class="smart-feature reveal"><strong>多组接口</strong><span>多组传感器端口与马达端口。</span></div>
+    <div class="smart-feature reveal"><strong>蓝牙与锂电池</strong><span>内置蓝牙模块与锂电池。</span></div>
+    <div class="smart-feature reveal"><strong>.py / .bin</strong><span>支持.py、.bin格式文件直接运行。</span></div>
+  </div>
+</section>
+
+<section class="smart-section">
+  <div class="reveal"><div class="smart-kicker">ELECTRONICS</div><h2>标配电子模块</h2><p>从动力、视觉到环境感知，覆盖机器人搭建与智能应用所需的多个方向。</p></div>
+  <div class="smart-grid">
+    <div class="smart-card reveal"><h3>动力模块</h3><p>包含大扭矩大型电机与带伺服功能的中型电机，均适配积木搭建结构；中型电机支持自动识别，转速表现优异。</p></div>
+    <div class="smart-card reveal"><h3>AI视觉模块</h3><p>支持Python编程，具备语音识别、图像学习、视觉识别能力。</p></div>
+    <div class="smart-card reveal"><h3>超声波传感器</h3><p>自带全彩LED灯，抗干扰性强、测量精度高、测距范围大。</p></div>
+    <div class="smart-card reveal"><h3>光电传感器</h3><p>信号输出连续，响应速度快，带阈值指示，可抵御日光干扰。</p></div>
+    <div class="smart-card reveal"><h3>颜色传感器</h3><p>可输出RGB原始数据，识别6种基础颜色，支持自适应亮度与自动白平衡。</p></div>
+    <div class="smart-card reveal"><h3>触碰传感器</h3><p>光电式开关设计，灵敏度高、带状态指示，使用寿命长。</p></div>
+    <div class="smart-card reveal"><h3>彩灯模块</h3><p>支持7种颜色显示，雾状灯效，切换速度快、功耗低。</p></div>
+  </div>
+</section>
+
+<section class="smart-section center">
+  <div class="reveal"><div class="smart-kicker">BUILD</div><h2>为搭建而生。</h2><p>采用环保ABS材料，生产品控严格，积木结构精准，拼插手感细腻。孔距兼容10毫米积木标准，支持无螺丝拼插搭建。</p></div>
+  <div class="smart-feature-grid">
+    <div class="smart-feature reveal"><strong>环保 ABS</strong><span>采用环保ABS材料。</span></div>
+    <div class="smart-feature reveal"><strong>10毫米标准</strong><span>孔距兼容10毫米积木标准。</span></div>
+    <div class="smart-feature reveal"><strong>无螺丝拼插</strong><span>支持无螺丝拼插搭建。</span></div>
+    <div class="smart-feature reveal"><strong>约3KG</strong><span>整套装约3KG。</span></div>
+    <div class="smart-feature reveal"><strong>彩盒 + 胶箱</strong><span>采用彩盒加胶箱的包装形式。</span></div>
+  </div>
+</section>
+
+<section class="smart-section">
+  <div class="reveal"><div class="smart-kicker">PROGRAMMING</div><h2>从图形化，<br>一路走到代码。</h2><p>支持多种编程方式：Scratch3.0图形化编程、流程图编程、Python代码编程、C语言代码编程，覆盖从入门到进阶的学习路径。</p></div>
+  <div class="smart-grid">
+    <div class="smart-card reveal"><h3>Scratch3.0</h3><p>图形化编程。</p></div>
+    <div class="smart-card reveal"><h3>流程图编程</h3><p>流程图编程方式。</p></div>
+    <div class="smart-card reveal"><h3>Python</h3><p>Python代码编程。</p></div>
+    <div class="smart-card reveal"><h3>C语言</h3><p>C语言代码编程。</p></div>
+  </div>
+  <div class="smart-feature-grid">
+    <div class="smart-feature reveal"><strong>PC / 平板 / 手机</strong><span>适配多类硬件终端。</span></div>
+    <div class="smart-feature reveal"><strong>手机端APP</strong><span>支持摄像头AI算法、人脸识别、AR二维码识别功能。</span></div>
+    <div class="smart-feature reveal"><strong>兼容多款官方编程软件</strong><span>ZMROBO系列、机器人快车、Cabin、RoboCode等。</span></div>
+  </div>
+</section>
+
+<section class="smart-section center">
+  <div class="reveal"><div class="smart-kicker">EXPAND</div><h2>还可以继续扩展。</h2><p>支持单独采购扩展配件丰富功能。</p></div>
+  <div class="smart-ext reveal">
+    <span class="smart-pill">智慧眼</span><span class="smart-pill">全彩灯环</span><span class="smart-pill">红外收发模块</span>
+    <span class="smart-pill">陀螺仪</span><span class="smart-pill">磁敏传感器</span><span class="smart-pill">气压传感器</span>
+    <span class="smart-pill">测距传感器</span><span class="smart-pill">手势传感器</span><span class="smart-pill">温湿度传感器</span>
+    <span class="smart-pill">点阵屏模块</span><span class="smart-pill">扫码摄像头</span><span class="smart-pill">小型舵机</span>
+    <span class="smart-pill">蓝牙适配器</span><span class="smart-pill">遥控手柄</span>
+  </div>
+</section>
+
+<section class="smart-final">
+  <div class="reveal"><div class="smart-kicker">JMC-NY-2108+</div><h2>智能风暴</h2><p class="smart-note">以上介绍依据你提供的产品资料整理。页面为「瞎玩」制作的第三方产品介绍，不代表中鸣官方页面。</p></div>
 </section>
 </div>
 
@@ -602,10 +719,10 @@ textarea:focus, textarea:focus-visible {
 <div class="about-glass" onclick="event.stopPropagation()">
 <h2>关于我们</h2>
 <p>Hello，我是瞎玩。感谢你来看我的个人主页。<br>这个项目目前被放置于 GitHub 托管，<br>你可以去给我点个 Star，谢谢。</p>
-<div class="about-ver">v2.8</div>
+<div class="about-ver">v2.7</div>
 <div class="about-glass-log" style="font-size:14px;color:#5c5c5e;line-height:1.7;text-align:left;position:relative;z-index:1;margin:16px 0 4px">
 <strong>更新日志</strong><br>
-v2.8：新增中鸣介绍 · E系列 / E7 创新风暴沉浸式介绍；修复激活状态校验，未激活时无法进入功能页面。
+v2.7：新增中鸣介绍 · E系列 / E7 创新风暴沉浸式介绍；修复激活状态校验，未激活时无法进入功能页面。
 </div>
 <button class="about-close" onclick="closeAbout()">好的</button>
 </div>
@@ -633,6 +750,10 @@ function showPage(name) {
     if (name === 'home') document.getElementById('page-home').classList.add('active');
     else if (name === 'zhongming') document.getElementById('page-zhongming').classList.add('active');
     else if (name === 'zhongming-e') document.getElementById('page-zhongming-e').classList.add('active');
+    else if (name === 'smart-storm') {
+        document.getElementById('page-smart-storm').classList.add('active');
+        initSmartStormAnimations();
+    }
     else if (name === 'e7') {
         document.getElementById('page-e7').classList.add('active');
         initE7Animations();
@@ -1110,6 +1231,27 @@ function initE7Animations() {
             if (i < 4) setTimeout(function(){el.classList.add('visible');}, 120 + i*120);
         });
     }, 30);
+}
+
+
+function initSmartStormAnimations() {
+    var page = document.getElementById('page-smart-storm');
+    if (!page) return;
+    setTimeout(function(){
+        var items = page.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {threshold:0.12});
+        items.forEach(function(el){ observer.observe(el); });
+        items.forEach(function(el,i){
+            if(i<4) setTimeout(function(){el.classList.add('visible');},120+i*120);
+        });
+    },30);
 }
 
 // ========== 激活码机制 ==========
