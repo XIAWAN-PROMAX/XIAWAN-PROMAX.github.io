@@ -386,6 +386,39 @@ textarea:focus, textarea:focus-visible {
  .zm-choice-card{padding:42px 24px}
 }
 
+/* ========== 无隐创新内部核验（隐藏入口） ========== */
+.verify-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10050;align-items:center;justify-content:center;padding:20px}
+.verify-overlay.show{display:flex}
+.verify-glass{background:rgba(255,255,255,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.55);border-radius:26px;padding:34px 28px 26px;max-width:400px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.8);position:relative;overflow:hidden;animation:aboutIn .45s cubic-bezier(.25,.1,.25,1)}
+.verify-glass::before{content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;background:radial-gradient(ellipse at 35% 15%,rgba(255,255,255,.5) 0%,rgba(201,125,43,.1) 40%,transparent 70%);pointer-events:none;animation:aboutFlow 6s ease-in-out infinite}
+.verify-glass>*{position:relative;z-index:1}
+.verify-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:1px;color:#fff;background:linear-gradient(120deg,#c97d2b,#e08d3c);padding:5px 12px;border-radius:30px;margin-bottom:14px;text-transform:uppercase}
+.verify-glass h2{font-size:22px;font-weight:600;color:#1c1c1e;margin-bottom:8px}
+.verify-glass .verify-sub{font-size:13px;color:#8e8e93;margin-bottom:20px}
+.verify-input{width:100%;padding:13px 15px;border-radius:14px;border:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.62);outline:none;color:#1c1c1e;font-size:15px;text-align:center;letter-spacing:4px;transition:border-color .25s,box-shadow .25s}
+.verify-input:focus{border-color:rgba(201,125,43,.45);box-shadow:0 0 0 3px rgba(201,125,43,.1)}
+.verify-submit{width:100%;margin-top:12px;padding:12px 20px;border:0;border-radius:30px;background:rgba(28,28,30,.9);color:#fff;font-size:15px;font-weight:500;cursor:pointer;transition:transform .25s ease}
+.verify-submit:active{transform:scale(.97)}
+.verify-status{min-height:20px;margin-top:12px;font-size:13px;font-weight:500}
+.verify-status.success{color:#2f8f5b}.verify-status.error{color:#c45b4c}
+.verify-hint{display:inline-block;margin-top:14px;font-size:13px;color:#c97d2b;cursor:pointer;border-bottom:1px dashed rgba(201,125,43,.5);padding-bottom:1px;transition:color .25s}
+.verify-hint:hover{color:#e08d3c}
+.verify-code-reveal{display:none;margin-top:14px;font-size:18px;font-weight:700;letter-spacing:3px;color:#1c1c1e;background:rgba(255,255,255,.6);border:1px dashed rgba(201,125,43,.5);border-radius:12px;padding:10px;animation:aboutIn .4s cubic-bezier(.25,.1,.25,1)}
+.verify-code-reveal.show{display:block}
+.verify-close{margin-top:16px;padding:8px 22px;border:0;background:transparent;color:#8e8e93;font-size:13px;cursor:pointer}
+.verify-done-icon{width:64px;height:64px;margin:6px auto 16px;border-radius:50%;background:linear-gradient(140deg,#2f8f5b,#46c176);color:#fff;font-size:30px;line-height:64px;box-shadow:0 10px 30px rgba(47,143,91,.35);animation:aboutIn .5s cubic-bezier(.34,1.56,.64,1)}
+.verify-glass h3{font-size:20px;font-weight:600;color:#1c1c1e;margin:0 0 10px}
+.verify-done-sub{font-size:14px;color:#5c5c5e;line-height:1.8}
+.verify-done-note{margin-top:18px;font-size:12px;color:#8e8e93;background:rgba(201,125,43,.1);border:1px solid rgba(201,125,43,.25);border-radius:12px;padding:10px 14px}
+@media(prefers-color-scheme:dark){
+  .verify-glass{background:rgba(44,44,48,.92);border-color:rgba(255,255,255,.12);box-shadow:0 24px 70px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
+  .verify-glass h2,.verify-glass h3,.verify-code-reveal{color:#f0f0f2}
+  .verify-glass .verify-sub,.verify-done-sub,.verify-done-note{color:#b0b0b5}
+  .verify-input{background:rgba(30,30,34,.72);border-color:rgba(255,255,255,.1);color:#f0f0f2}
+  .verify-submit{background:rgba(240,240,242,.9);color:#1c1c1e}
+  .verify-code-reveal{background:rgba(30,30,34,.6)}
+}
+
 </style>
 </head>
 <body>
@@ -399,6 +432,28 @@ textarea:focus, textarea:focus-visible {
     <button class="activation-submit" onclick="activateCode()">立即激活</button>
     <div class="activation-status" id="activationStatus"></div>
     <button class="activation-close" onclick="closeActivation()">关闭</button>
+  </div>
+</div>
+<!-- 无隐创新内部核验（在「已激活」按钮上连点三下进入） -->
+<div class="verify-overlay" id="verifyOverlay" onclick="closeVerify()">
+  <div class="verify-glass" onclick="event.stopPropagation()">
+    <div id="verifyStepCode">
+      <div class="verify-badge">无隐创新 · 内部核验</div>
+      <h2>无隐创新内部核验</h2>
+      <p class="verify-sub">请输入核验码以继续</p>
+      <input class="verify-input" id="verifyCode" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="请输入核验码" onkeydown="if(event.key==='Enter')submitVerify()">
+      <button class="verify-submit" onclick="submitVerify()">提交核验</button>
+      <div class="verify-status" id="verifyStatus"></div>
+      <div class="verify-hint" id="verifyHowTo" onclick="toggleHowTo()">如何获得？</div>
+      <div class="verify-code-reveal" id="verifyCodeReveal">1105327450</div>
+    </div>
+    <div id="verifyStepDone" style="display:none">
+      <div class="verify-done-icon">✓</div>
+      <h3>你已通过核验，欢迎加入内测!</h3>
+      <p class="verify-done-sub">感谢您的支持，<br>请将此页面截图发至群内。</p>
+      <div class="verify-done-note">「瞎玩主页」内测成员身份已确认</div>
+    </div>
+    <button class="verify-close" id="verifyClose" onclick="closeVerify()">关闭</button>
   </div>
 </div>
 <div class="container">
@@ -719,10 +774,10 @@ textarea:focus, textarea:focus-visible {
 <div class="about-glass" onclick="event.stopPropagation()">
 <h2>关于我们</h2>
 <p>Hello，我是瞎玩。感谢你来看我的个人主页。<br>这个项目目前被放置于 GitHub 托管，<br>你可以去给我点个 Star，谢谢。</p>
-<div class="about-ver">v2.7</div>
+<div class="about-ver">v3.0</div>
 <div class="about-glass-log" style="font-size:14px;color:#5c5c5e;line-height:1.7;text-align:left;position:relative;z-index:1;margin:16px 0 4px">
 <strong>更新日志</strong><br>
-v2.9：新增中鸣介绍 · E系列 / E6 智能风暴沉浸式介绍。
+v3.0:全面重构!并且增加了内测模式
 </div>
 <button class="about-close" onclick="closeAbout()">好的</button>
 </div>
@@ -1312,8 +1367,69 @@ function activateCode() {
     }
 }
 
+// ========== 无隐创新内部核验（隐藏入口：已激活按钮连点三下） ==========
+var VERIFY_CODE = '244';
+var verifyClicks = 0;
+var verifyClickTimer = null;
+
+function initVerifyEntry() {
+    var entry = document.getElementById('activationEntry');
+    entry.addEventListener('click', function(){
+        if (!isActivated()) return;      // 仅已激活后可进入
+        verifyClicks++;
+        if (verifyClicks >= 3) {
+            verifyClicks = 0;
+            clearTimeout(verifyClickTimer);
+            openVerify();
+            return;
+        }
+        clearTimeout(verifyClickTimer);
+        verifyClickTimer = setTimeout(function(){ verifyClicks = 0; }, 800);
+    });
+}
+
+function openVerify() {
+    document.getElementById('verifyStepCode').style.display = '';
+    document.getElementById('verifyStepDone').style.display = 'none';
+    document.getElementById('verifyCodeReveal').classList.remove('show');
+    document.getElementById('verifyStatus').textContent = '';
+    document.getElementById('verifyStatus').className = 'verify-status';
+    document.getElementById('verifyClose').textContent = '关闭';
+    document.getElementById('verifyOverlay').classList.add('show');
+    setTimeout(function(){ document.getElementById('verifyCode').focus(); }, 60);
+}
+
+function closeVerify() {
+    document.getElementById('verifyOverlay').classList.remove('show');
+}
+
+function toggleHowTo() {
+    document.getElementById('verifyCodeReveal').classList.toggle('show');
+}
+
+function submitVerify() {
+    var input = document.getElementById('verifyCode');
+    var status = document.getElementById('verifyStatus');
+    var code = input.value.trim().toUpperCase();
+    if (code === VERIFY_CODE) {
+        status.textContent = '✓ 核验通过';
+        status.className = 'verify-status success';
+        setTimeout(function(){
+            document.getElementById('verifyStepCode').style.display = 'none';
+            document.getElementById('verifyStepDone').style.display = '';
+            document.getElementById('verifyClose').textContent = '完成';
+        }, 500);
+    } else {
+        status.textContent = '核验码错误';
+        status.className = 'verify-status error';
+        input.focus();
+        input.select();
+    }
+}
+
 function initActivation() {
     updateActivationUI();
+    initVerifyEntry();
     // 未激活时强制隐藏所有非首页页面，避免历史 DOM 状态绕过 showPage。
     if (!isActivated()) {
         document.querySelectorAll('.page:not(#page-home)').forEach(function(p){ p.classList.remove('active'); });
