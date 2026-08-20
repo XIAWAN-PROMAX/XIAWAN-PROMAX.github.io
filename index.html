@@ -284,7 +284,7 @@ textarea:focus, textarea:focus-visible {
 }
 
 /* ========== 中鸣介绍 / E7 沉浸式页面 ========== */
-.page-zm,.page-zm-e,.page-zm-e7,.page-zm-smart{
+.page-zm,.page-zm-e,.page-zm-e7,.page-zm-smart,.page-zm-m,.page-zm-m5,.page-zm-wb{
   position:fixed;
   inset:0;
   width:100vw;
@@ -302,6 +302,9 @@ textarea:focus, textarea:focus-visible {
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
 }
+/* 详情页中，仅 M5/M6（新增页面）去掉叠加的 pageIn 入场动画，避免打开时闪一下；
+   E7、智能风暴等原有详情页与系列菜单页均保留原动画 */
+#page-m6,#page-m5{animation:none!important}
 .zm-hero{min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:78px 20px 36px}
 .zm-kicker{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#8e8e93;margin-bottom:18px}
 .zm-hero h1{font-size:clamp(44px,12vw,84px);line-height:.95;letter-spacing:-4px;margin:0 0 20px;font-weight:700;background:linear-gradient(110deg,#fff,#9fd7ff 45%,#7c5cff);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -380,11 +383,80 @@ textarea:focus, textarea:focus-visible {
  .smart-card{min-height:auto}
 }
 
+/* ========== 中鸣介绍 / M系列·捍卫者小威奇 M6 沉浸式页面（暖焰主题） ========== */
+.page-zm-m .zm-hero h1{background:linear-gradient(110deg,#ffe3b0,#ffb347 45%,#ff5e62);-webkit-background-clip:text;background-clip:text;color:transparent}
+.zm-m-card:hover{border-color:rgba(255,150,70,.4)!important}
+.m6-hero{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 22px 50px;position:relative}
+.m6-model{font-size:11px;letter-spacing:5px;color:#c98a55;margin-bottom:24px;text-transform:uppercase}
+.m6-title{font-size:clamp(54px,13vw,110px);letter-spacing:-6px;line-height:.98;margin:0;font-weight:700;background:linear-gradient(110deg,#ffe8b3,#ffb347 40%,#ff5e62);-webkit-background-clip:text;background-clip:text;color:transparent}
+.m6-subtitle{margin-top:20px;font-size:clamp(19px,4.8vw,30px);color:#e8d6c4;letter-spacing:-1px}
+.m6-lead{max-width:700px;margin:24px auto 0;color:#b09786;line-height:1.9;font-size:14px}
+.m6-section{max-width:1100px;margin:0 auto;padding:145px 22px;position:relative}
+.m6-section.center{text-align:center}
+.m6-kicker{font-size:11px;letter-spacing:4px;color:#d98f4f;text-transform:uppercase;margin-bottom:16px}
+.m6-section h2{font-size:clamp(38px,8vw,72px);letter-spacing:-4px;line-height:1.08;margin:0 0 22px;color:#f8f1ea}
+.m6-section p{color:#b09786;line-height:1.9;font-size:14px;max-width:720px;margin:0 auto}
+.m6-divider{width:64px;height:3px;border-radius:3px;background:linear-gradient(90deg,#ffb347,#ff5e62);margin:26px auto 0}
+.m6-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:58px}
+.m6-card{padding:34px;border-radius:28px;background:linear-gradient(145deg,rgba(255,150,90,.09),rgba(255,120,60,.03));border:1px solid rgba(255,150,90,.16);box-shadow:inset 0 1px 0 rgba(255,180,120,.1);min-height:210px;position:relative;overflow:hidden}
+.m6-card:before{content:"";position:absolute;width:200px;height:200px;right:-60px;top:-60px;background:radial-gradient(circle,rgba(255,80,70,.14),transparent 70%);filter:blur(10px)}
+.m6-card h3{font-size:24px;letter-spacing:-1px;margin:0 0 14px;color:#ffe6c9;position:relative}
+.m6-card p{font-size:13px;color:#b09786;line-height:1.9;position:relative}
+.m6-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:52px}
+.m6-feature{padding:25px 20px;border-radius:22px;background:rgba(255,140,60,.055);border:1px solid rgba(255,140,60,.14)}
+.m6-feature strong{display:block;font-size:17px;margin-bottom:8px;color:#ffd9a8}
+.m6-feature span{font-size:12px;color:#b09786;line-height:1.7}
+.m6-ext{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:46px}
+.m6-pill{padding:11px 15px;border:1px solid rgba(255,140,60,.18);border-radius:999px;background:rgba(255,140,60,.06);color:#e8c9a6;font-size:12px}
+.m6-final{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 22px}
+.m6-final h2{font-size:clamp(48px,10vw,92px);letter-spacing:-5px;line-height:1.02;margin:0 0 24px;color:#ffe0b0}
+.m6-note{max-width:620px;margin:auto;color:#7a6a5e;font-size:11px;line-height:1.8}
+@media(max-width:680px){
+ .m6-grid{grid-template-columns:1fr}
+ .m6-feature-grid{grid-template-columns:1fr 1fr}
+ .m6-section{padding:110px 18px}
+ .m6-card{min-height:auto}
+}
+
 @media(max-width:680px){
  .e7-stat-grid,.e7-modules{grid-template-columns:1fr}
  .e7-section{padding:110px 18px}
  .zm-choice-card{padding:42px 24px}
 }
+
+/* ========== 中鸣介绍 / M系列·天枢编程 M5 沉浸式页面（星空紫主题） ========== */
+.zm-m5-card:hover{border-color:rgba(167,139,250,.45)!important}
+.m5-hero{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 22px 50px;position:relative}
+.m5-model{font-size:11px;letter-spacing:5px;color:#8f82c4;margin-bottom:24px;text-transform:uppercase}
+.m5-title{font-size:clamp(54px,13vw,110px);letter-spacing:-6px;line-height:.98;margin:0;font-weight:700;background:linear-gradient(110deg,#ece4ff,#b39dfc 45%,#7c6cf0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.m5-subtitle{margin-top:20px;font-size:clamp(19px,4.8vw,30px);color:#dcd3f2;letter-spacing:-1px}
+.m5-lead{max-width:700px;margin:24px auto 0;color:#a99fc9;line-height:1.9;font-size:14px}
+.m5-section{max-width:1100px;margin:0 auto;padding:145px 22px;position:relative}
+.m5-section.center{text-align:center}
+.m5-kicker{font-size:11px;letter-spacing:4px;color:#a592e0;text-transform:uppercase;margin-bottom:16px}
+.m5-section h2{font-size:clamp(38px,8vw,72px);letter-spacing:-4px;line-height:1.08;margin:0 0 22px;color:#f2eeff}
+.m5-section p{color:#a99fc9;line-height:1.9;font-size:14px;max-width:720px;margin:0 auto}
+.m5-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:58px}
+.m5-card{padding:34px;border-radius:28px;background:linear-gradient(145deg,rgba(150,120,255,.09),rgba(120,100,255,.03));border:1px solid rgba(150,120,255,.16);box-shadow:inset 0 1px 0 rgba(180,160,255,.1);min-height:210px;position:relative;overflow:hidden}
+.m5-card:before{content:"";position:absolute;width:200px;height:200px;right:-60px;top:-60px;background:radial-gradient(circle,rgba(140,100,255,.16),transparent 70%);filter:blur(10px)}
+.m5-card h3{font-size:24px;letter-spacing:-1px;margin:0 0 14px;color:#e6ddff;position:relative}
+.m5-card p{font-size:13px;color:#a99fc9;line-height:1.9;position:relative}
+.m5-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:52px}
+.m5-feature{padding:25px 20px;border-radius:22px;background:rgba(150,120,255,.06);border:1px solid rgba(150,120,255,.15)}
+.m5-feature strong{display:block;font-size:17px;margin-bottom:8px;color:#dcd0ff}
+.m5-feature span{font-size:12px;color:#a99fc9;line-height:1.7}
+.m5-ext{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:46px}
+.m5-pill{padding:11px 15px;border:1px solid rgba(150,120,255,.18);border-radius:999px;background:rgba(150,120,255,.06);color:#cfc2f0;font-size:12px}
+.m5-final{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 22px}
+.m5-final h2{font-size:clamp(48px,10vw,92px);letter-spacing:-5px;line-height:1.02;margin:0 0 24px;color:#e6d9ff}
+.m5-note{max-width:620px;margin:auto;color:#7d739f;font-size:11px;line-height:1.8}
+@media(max-width:680px){
+ .m5-grid{grid-template-columns:1fr}
+ .m5-feature-grid{grid-template-columns:1fr 1fr}
+ .m5-section{padding:110px 18px}
+ .m5-card{min-height:auto}
+}
+
 
 /* ========== 无隐创新内部核验（隐藏入口） ========== */
 .verify-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10050;align-items:center;justify-content:center;padding:20px}
@@ -426,8 +498,8 @@ textarea:focus, textarea:focus-visible {
 <div class="first-activation-hint" id="firstActivationHint" onclick="openActivation()">已有激活码，开始激活</div>
 <div class="activation-overlay" id="activationOverlay" onclick="closeActivation(event)">
   <div class="activation-glass" onclick="event.stopPropagation()">
-    <h2>激活瞎玩主页 Pro</h2>
-    <p>输入激活码即可使用全部功能</p>
+    <h2>正式版激活</h2>
+    <p>输入激活码即可解锁全部功能</p>
     <input class="activation-input" id="activationCode" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="请输入激活码" onkeydown="if(event.key==='Enter')activateCode()">
     <button class="activation-submit" onclick="activateCode()">立即激活</button>
     <div class="activation-status" id="activationStatus"></div>
@@ -449,9 +521,9 @@ textarea:focus, textarea:focus-visible {
     </div>
     <div id="verifyStepDone" style="display:none">
       <div class="verify-done-icon">✓</div>
-      <h3>你已通过核验，欢迎加入内测!</h3>
+      <h3>你已通过核验!</h3>
       <p class="verify-done-sub">感谢您的支持，<br>请将此页面截图发至群内。</p>
-      <div class="verify-done-note">「瞎玩主页」内测成员身份已确认</div>
+      <div class="verify-done-note">「瞎玩主页」身份已确认</div>
     </div>
     <button class="verify-close" id="verifyClose" onclick="closeVerify()">关闭</button>
   </div>
@@ -481,11 +553,16 @@ textarea:focus, textarea:focus-visible {
   <h1>中鸣介绍</h1>
   <p>探索中鸣机器人产品体系。<br>从 E 系列开始。</p>
 </section>
-<div class="zm-choice">
+<div class="zm-choice" style="flex-direction:column;align-items:center;gap:16px">
   <div class="zm-choice-card" onclick="showPage('zhongming-e')">
     <div class="zm-kicker">E SERIES</div>
     <h2>E系列</h2>
     <p>面向机器人创作与编程学习的产品系列。</p>
+  </div>
+  <div class="zm-choice-card zm-m-card" onclick="showPage('zhongming-m')">
+    <div class="zm-kicker">M SERIES</div>
+    <h2>M系列</h2>
+    <p>面向入门与编程启蒙的产品系列。</p>
   </div>
 </div>
 <div class="zm-footnote">本页面为「瞎玩」制作的第三方产品介绍页面，仅用于产品信息展示。</div>
@@ -653,6 +730,171 @@ textarea:focus, textarea:focus-visible {
 </section>
 </div>
 
+<div id="page-zhongming-m" class="page page-zm-m">
+<button class="back-btn" onclick="showPage('zhongming')">← 返回</button>
+<section class="zm-hero" style="padding-top:62px">
+  <div class="zm-kicker">M SERIES</div>
+  <h1>M系列</h1>
+  <p>面向入门与编程启蒙的产品系列。</p>
+</section>
+<div class="zm-choice" style="flex-direction:column;align-items:center;gap:16px">
+  <div class="zm-choice-card zm-m-card" onclick="showPage('m6')">
+    <div class="zm-kicker">M6 · DEFENDER WISEKIT</div>
+    <h2>捍卫者小威奇</h2>
+    <p>以 M6-RCU 控制器为核心，集合动力与感知，面向入门编程学习场景。</p>
+  </div>
+  <div class="zm-choice-card zm-m5-card" onclick="showPage('m5')">
+    <div class="zm-kicker">M5 · TIANSHU PROGRAMMING</div>
+    <h2>天枢编程</h2>
+    <p>面向低龄与编程启蒙的教育套装，动手搭建、图形化启蒙，让创意快乐生长。</p>
+  </div>
+</div>
+<div class="zm-footnote">本页面为「瞎玩」制作的第三方产品介绍页面，仅用于产品信息展示。</div>
+</div>
+
+<div id="page-m6" class="page page-zm-m">
+<button class="back-btn" onclick="showPage('zhongming-m')">← 返回</button>
+
+<section class="m6-hero">
+  <div class="m6-model reveal">M6-RCU · DEFENDER WISEKIT</div>
+  <h1 class="m6-title reveal">M6</h1>
+  <div class="m6-subtitle reveal">捍卫者小威奇</div>
+  <p class="m6-lead reveal">面向入门与编程启蒙的教育机器人套装。以 M6-RCU 控制器为核心，上手简单、拓展灵活，让初学者从第一个动作、第一行程序开始，体验创造的乐趣。</p>
+</section>
+
+<section class="m6-section center">
+  <div class="reveal"><div class="m6-kicker">M6 · CORE</div><h2>M6-RCU 主控核心</h2><p>以 M6-RCU 控制器作为整套系统的控制中枢，连接动力与感知模块，界面友好、上手门槛低，让入门者专注思考与创造。</p></div>
+  <div class="m6-feature-grid">
+    <div class="m6-feature reveal"><strong>友好主控</strong><span>简单易上手，入门零负担。</span></div>
+    <div class="m6-feature reveal"><strong>多组端口</strong><span>多组传感器端口与马达端口，灵活扩展。</span></div>
+    <div class="m6-feature reveal"><strong>蜂鸣与彩灯</strong><span>状态反馈与指示清晰直观。</span></div>
+    <div class="m6-feature reveal"><strong>无线连接</strong><span>支持蓝牙 / 无线通信，便捷调试。</span></div>
+    <div class="m6-feature reveal"><strong>多语言编程</strong><span>兼容图形化、Python 与 C 语言。</span></div>
+    <div class="m6-feature reveal"><strong>学习适配</strong><span>面向教育启蒙的可靠硬件基础。</span></div>
+  </div>
+</section>
+
+<section class="m6-section">
+  <div class="reveal"><div class="m6-kicker">ELECTRONICS</div><h2>标配电子模块</h2><p>从动力、感知到反馈，覆盖入门机器人的搭建与编程启蒙方向。</p></div>
+  <div class="m6-grid">
+    <div class="m6-card reveal"><h3>动力模块</h3><p>电机适配积木结构，提供稳定的运动能力，让创意真正动起来。</p></div>
+    <div class="m6-card reveal"><h3>触碰传感器</h3><p>灵敏可靠的状态检测，让机器人感知触碰与碰撞。</p></div>
+    <div class="m6-card reveal"><h3>光电传感器</h3><p>连续信号输出、响应迅速，支持循迹与位置判断。</p></div>
+    <div class="m6-card reveal"><h3>超声波传感器</h3><p>测距范围大、抗干扰性强，辅助避障与环境感知。</p></div>
+    <div class="m6-card reveal"><h3>颜色传感器</h3><p>识别基础颜色并输出 RGB 数据，支持识别与路径任务。</p></div>
+    <div class="m6-card reveal"><h3>彩灯模块</h3><p>多种颜色显示与灯效，指示状态并提升交互乐趣。</p></div>
+  </div>
+</section>
+
+<section class="m6-section center">
+  <div class="reveal"><div class="m6-kicker">BUILD</div><h2>为入门而生。</h2><p>采用安全耐用的 ABS 材料，孔距兼容 10 毫米积木标准，支持无螺丝快速拼插搭建，结构直观、拼搭轻松，让初学者自由发挥想象。</p></div>
+  <div class="m6-feature-grid">
+    <div class="m6-feature reveal"><strong>安全 ABS</strong><span>安全耐用的结构件，适合低龄使用。</span></div>
+    <div class="m6-feature reveal"><strong>10毫米标准</strong><span>孔距兼容 10 毫米积木标准。</span></div>
+    <div class="m6-feature reveal"><strong>无螺丝拼插</strong><span>快速拼插搭建，便于反复尝试改装。</span></div>
+  </div>
+</section>
+
+<section class="m6-section">
+  <div class="reveal"><div class="m6-kicker">PROGRAMMING</div><h2>从图形化，<br>一路走到代码。</h2><p>支持多种编程方式：图形化编程、流程图编程、Python 代码编程与 C 语言编程，从零基础到进阶的完整学习路径。</p></div>
+  <div class="m6-grid">
+    <div class="m6-card reveal"><h3>图形化编程</h3><p>拖拽式搭建逻辑，适合零基础入门。</p></div>
+    <div class="m6-card reveal"><h3>流程图编程</h3><p>直观的流程化编程方式。</p></div>
+    <div class="m6-card reveal"><h3>Python</h3><p>Python 代码编程，逐步走向真实代码。</p></div>
+    <div class="m6-card reveal"><h3>C语言</h3><p>C 语言代码编程，探索更底层控制。</p></div>
+  </div>
+  <div class="m6-feature-grid">
+    <div class="m6-feature reveal"><strong>多终端</strong><span>适配 PC / 平板 / 手机调试。</span></div>
+    <div class="m6-feature reveal"><strong>官方软件</strong><span>兼容 ZMROBO 系列等官方编程环境。</span></div>
+    <div class="m6-feature reveal"><strong>渐进式学习</strong><span>从图形化自然过渡到代码编程。</span></div>
+  </div>
+</section>
+
+<section class="m6-section center">
+  <div class="reveal"><div class="m6-kicker">EXPAND</div><h2>还可以继续扩展。</h2><p>支持单独采购扩展配件，让创作与玩法持续丰富，伴随学习者一起成长。</p></div>
+  <div class="m6-ext reveal">
+    <span class="m6-pill">循迹模块</span><span class="m6-pill">陀螺仪</span><span class="m6-pill">测距传感器</span>
+    <span class="m6-pill">全彩灯环</span><span class="m6-pill">遥控手柄</span><span class="m6-pill">小型舵机</span>
+    <span class="m6-pill">点阵屏模块</span><span class="m6-pill">扫码摄像头</span><span class="m6-pill">红外收发模块</span>
+  </div>
+</section>
+
+<section class="m6-final">
+  <div class="reveal"><div class="m6-kicker">M6 · DEFENDER WISEKIT</div><h2>捍卫者小威奇</h2><p class="m6-note">以上介绍页面为「瞎玩」制作的第三方产品介绍，不代表中鸣官方页面。具体参数以中鸣官方公开资料为准。</p></div>
+</section>
+</div>
+
+<div id="page-m5" class="page page-zm-m5">
+<button class="back-btn" onclick="showPage('zhongming-m')">← 返回</button>
+
+<section class="m5-hero">
+  <div class="m5-model reveal">M5 · TIANSHU PROGRAMMING</div>
+  <h1 class="m5-title reveal">M5</h1>
+  <div class="m5-subtitle reveal">天枢编程</div>
+  <p class="m5-lead reveal">面向低龄与编程启蒙的 STEAM 教育套装。动手搭建、图形化启蒙，让创意在搭建与编程的乐趣里快乐生长，从零开始爱上创造。</p>
+</section>
+
+<section class="m5-section center">
+  <div class="reveal"><div class="m5-kicker">M5 · CORE</div><h2>天枢主控核心</h2><p>以友好易用的主控为核心，连接动力与感知模块，简单直观、上手轻松，为低龄与零基础学习者打造。</p></div>
+  <div class="m5-feature-grid">
+    <div class="m5-feature reveal"><strong>轻松上手</strong><span>界面友好，零基础也能快速开始。</span></div>
+    <div class="m5-feature reveal"><strong>多组接口</strong><span>多组端口，自由连接模块与扩展。</span></div>
+    <div class="m5-feature reveal"><strong>声光反馈</strong><span>蜂鸣与彩灯，互动反馈清晰有趣。</span></div>
+    <div class="m5-feature reveal"><strong>图形化启蒙</strong><span>拖拽式编程，适合编程启蒙。</span></div>
+    <div class="m5-feature reveal"><strong>无线连接</strong><span>支持无线通信，便捷调试与分享。</span></div>
+    <div class="m5-feature reveal"><strong>安全设计</strong><span>面向低龄的可靠硬件基础。</span></div>
+  </div>
+</section>
+
+<section class="m5-section">
+  <div class="reveal"><div class="m5-kicker">ELECTRONICS</div><h2>标配电子模块</h2><p>从动力、感知到反馈，覆盖搭建与编程启蒙所需的多种方向。</p></div>
+  <div class="m5-grid">
+    <div class="m5-card reveal"><h3>动力模块</h3><p>电机适配积木结构，让搭建的作品真正动起来。</p></div>
+    <div class="m5-card reveal"><h3>触碰传感器</h3><p>灵敏的状态检测，让机器人感知触碰与碰撞。</p></div>
+    <div class="m5-card reveal"><h3>光电传感器</h3><p>响应迅速，支持循迹与位置判断。</p></div>
+    <div class="m5-card reveal"><h3>彩灯模块</h3><p>多彩灯效，点亮创意并指示状态。</p></div>
+    <div class="m5-card reveal"><h3>喇叭模块</h3><p>发出音效与提示，互动表达更生动。</p></div>
+    <div class="m5-card reveal"><h3>搭建积木</h3><p>丰富积木件，自由发挥想象搭建造型。</p></div>
+  </div>
+</section>
+
+<section class="m5-section center">
+  <div class="reveal"><div class="m5-kicker">BUILD</div><h2>为启蒙而生。</h2><p>采用安全环保的 ABS 材料，圆润边角、孔距兼容 10 毫米积木标准，无螺丝拼插搭建，让低龄学习者安全又尽兴地自由创造。</p></div>
+  <div class="m5-feature-grid">
+    <div class="m5-feature reveal"><strong>安全 ABS</strong><span>环保耐用的结构件，圆润边角更安心。</span></div>
+    <div class="m5-feature reveal"><strong>10毫米标准</strong><span>孔距兼容 10 毫米积木标准。</span></div>
+    <div class="m5-feature reveal"><strong>无螺丝拼插</strong><span>轻松拼插，适合低龄反复尝试。</span></div>
+  </div>
+</section>
+
+<section class="m5-section">
+  <div class="reveal"><div class="m5-kicker">PROGRAMMING</div><h2>从图形化，<br>点亮想象力。</h2><p>以图形化拖拽编程为主，让低龄学习者无需代码也能让机器人动起来，循序渐进培养逻辑与创造力。</p></div>
+  <div class="m5-grid">
+    <div class="m5-card reveal"><h3>图形化编程</h3><p>拖拽式搭建指令，直观易懂零门槛。</p></div>
+    <div class="m5-card reveal"><h3>情景任务</h3><p>丰富的任务玩法，边玩边学。</p></div>
+    <div class="m5-card reveal"><h3>步骤引导</h3><p>渐进式引导，逐步建立编程思维。</p></div>
+    <div class="m5-card reveal"><h3>STEAM 拓展</h3><p>融入艺术与工程，激发综合兴趣。</p></div>
+  </div>
+  <div class="m5-feature-grid">
+    <div class="m5-feature reveal"><strong>多终端</strong><span>适配 PC / 平板 / 手机。</span></div>
+    <div class="m5-feature reveal"><strong>官方软件</strong><span>兼容 ZMROBO 系列等官方环境。</span></div>
+    <div class="m5-feature reveal"><strong>启蒙导向</strong><span>面向低龄编程启蒙而设计。</span></div>
+  </div>
+</section>
+
+<section class="m5-section center">
+  <div class="reveal"><div class="m5-kicker">EXPAND</div><h2>还可以继续扩展。</h2><p>支持扩展配件与更多玩法，陪伴学习者从启蒙一步步走向更广阔的创造。</p></div>
+  <div class="m5-ext reveal">
+    <span class="m5-pill">小型舵机</span><span class="m5-pill">测距传感器</span><span class="m5-pill">全彩灯环</span>
+    <span class="m5-pill">点阵屏模块</span><span class="m5-pill">遥控手柄</span><span class="m5-pill">红外收发模块</span>
+    <span class="m5-pill">陀螺仪</span><span class="m5-pill">循迹模块</span><span class="m5-pill">扫码摄像头</span>
+  </div>
+</section>
+
+<section class="m5-final">
+  <div class="reveal"><div class="m5-kicker">M5 · TIANSHU PROGRAMMING</div><h2>天枢编程</h2><p class="m5-note">以上介绍页面为「瞎玩」制作的第三方产品介绍，不代表中鸣官方页面。具体参数以中鸣官方公开资料为准。</p></div>
+</section>
+</div>
 <div id="page-hedian" class="page page-hedian">
 <button class="back-btn" onclick="showPage('home')">← 返回</button>
 <div class="reactor-wrap">
@@ -774,10 +1016,11 @@ textarea:focus, textarea:focus-visible {
 <div class="about-glass" onclick="event.stopPropagation()">
 <h2>关于我们</h2>
 <p>Hello，我是瞎玩。感谢你来看我的个人主页。<br>这个项目目前被放置于 GitHub 托管，<br>你可以去给我点个 Star，谢谢。</p>
-<div class="about-ver">v3.0</div>
+<div class="about-ver">v3.1</div>
 <div class="about-glass-log" style="font-size:14px;color:#5c5c5e;line-height:1.7;text-align:left;position:relative;z-index:1;margin:16px 0 4px">
 <strong>更新日志</strong><br>
-v3.0:全面重构!并且增加了内测模式
+v3.1:增加了 M5 与 M6 的介绍<br>
+v3.0:全面重构!
 </div>
 <button class="about-close" onclick="closeAbout()">好的</button>
 </div>
@@ -802,24 +1045,21 @@ function showPage(name) {
     }
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     window.scrollTo({top:0,behavior:'auto'});
-    if (name === 'home') document.getElementById('page-home').classList.add('active');
-    else if (name === 'zhongming') document.getElementById('page-zhongming').classList.add('active');
-    else if (name === 'zhongming-e') document.getElementById('page-zhongming-e').classList.add('active');
-    else if (name === 'smart-storm') {
-        document.getElementById('page-smart-storm').classList.add('active');
-        initSmartStormAnimations();
-    }
-    else if (name === 'e7') {
-        document.getElementById('page-e7').classList.add('active');
-        initE7Animations();
-    }
-    else if (name === 'hedian') {
-        document.getElementById('page-hedian').classList.add('active');
-        setTimeout(initReactor, 100);
-    }
-    else if (name === 'network') {
-        document.getElementById('page-network').classList.add('active');
-        fetchNetworkInfo();
+    var target = null;
+    if (name === 'home') target = document.getElementById('page-home');
+    else if (name === 'zhongming') target = document.getElementById('page-zhongming');
+    else if (name === 'zhongming-e') target = document.getElementById('page-zhongming-e');
+    else if (name === 'zhongming-m') target = document.getElementById('page-zhongming-m');
+    else if (name === 'm6') { target = document.getElementById('page-m6'); initM6Animations(); }
+    else if (name === 'm5') { target = document.getElementById('page-m5'); initM5Animations(); }
+    else if (name === 'smart-storm') { target = document.getElementById('page-smart-storm'); initSmartStormAnimations(); }
+    else if (name === 'e7') { target = document.getElementById('page-e7'); initE7Animations(); }
+    else if (name === 'hedian') { target = document.getElementById('page-hedian'); setTimeout(initReactor, 100); }
+    else if (name === 'network') { target = document.getElementById('page-network'); fetchNetworkInfo(); }
+    if (target) {
+        target.classList.add('active');
+        // 这些页面是 position:fixed 内部滚动，重置自身的 scrollTop，避免上次滚动位置被保留
+        if (target.scrollTop > 0) target.scrollTop = 0;
     }
     return true;
 }
@@ -1309,10 +1549,54 @@ function initSmartStormAnimations() {
     },30);
 }
 
+function initM6Animations() {
+    var page = document.getElementById('page-m6');
+    if (!page) return;
+    var items = page.querySelectorAll('.reveal');
+    items.forEach(function(el){ el.classList.remove('visible'); });
+    setTimeout(function(){
+        var observer = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {threshold:0.12});
+        items.forEach(function(el){ observer.observe(el); });
+        page.querySelectorAll('.reveal').forEach(function(el, i){
+            if (i < 4) setTimeout(function(){el.classList.add('visible');}, 120 + i*120);
+        });
+    }, 30);
+}
+
+function initM5Animations() {
+    var page = document.getElementById('page-m5');
+    if (!page) return;
+    var items = page.querySelectorAll('.reveal');
+    items.forEach(function(el){ el.classList.remove('visible'); });
+    setTimeout(function(){
+        var observer = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {threshold:0.12});
+        items.forEach(function(el){ observer.observe(el); });
+        page.querySelectorAll('.reveal').forEach(function(el, i){
+            if (i < 4) setTimeout(function(){el.classList.add('visible');}, 120 + i*120);
+        });
+    }, 30);
+}
+
+
 // ========== 激活码机制 ==========
 var ACTIVATION_KEY = 'xw_activated';
 var FIRST_VISIT_KEY = 'xw_activation_hint_seen';
-var VALID_CODES = ['XIAWAN2026', 'XIAWANPRO', 'XW2026'];
+var VALID_CODES = ['XIAWAN2026'];
+var FAKE_CODES = ['XW0000', 'XW0001', 'ALPHA01', 'OMEGA01', 'XIAWAN1234'];
 
 function isActivated() {
     return localStorage.getItem(ACTIVATION_KEY) === '1';
@@ -1360,6 +1644,10 @@ function activateCode() {
         input.disabled = true;
         updateActivationUI();
         setTimeout(function(){ document.getElementById('activationOverlay').classList.remove('show'); input.disabled = false; input.value = ''; }, 1000);
+    } else if (FAKE_CODES.indexOf(code) !== -1) {
+        status.textContent = '✕ 这是伪装码，不生效';
+        status.className = 'activation-status error';
+        input.focus();
     } else {
         status.textContent = '激活码错误';
         status.className = 'activation-status error';
