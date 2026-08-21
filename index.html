@@ -457,6 +457,63 @@ textarea:focus, textarea:focus-visible {
  .m5-card{min-height:auto}
 }
 
+/* ========== 中鸣介绍 / 其他 · 威宝机器人（浅色主题 · 图文 · 官方配色） ========== */
+.page-zm-wb{background:#F9FCFF!important;color:#1D1D1F!important}
+.page-zm-wb .zm-hero h1{background:linear-gradient(110deg,#0073FF,#31A8FE 60%,#66E1FD);-webkit-background-clip:text;background-clip:text;color:transparent}
+.zm-wb-card:hover{border-color:rgba(0,115,255,.45)!important}
+.wb-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 22px 60px;position:relative;background:linear-gradient(180deg,#EAF4FF,#F9FCFF);overflow:hidden}
+.wb-kicker{font-size:11px;letter-spacing:5px;color:#0073FF;margin-bottom:24px;text-transform:uppercase}
+.wb-title{font-size:clamp(54px,13vw,110px);letter-spacing:-6px;line-height:.98;margin:0;font-weight:700;color:#1D1D1F}
+.wb-subtitle{margin-top:20px;font-size:clamp(19px,4.8vw,30px);color:#3A3A3C;letter-spacing:-1px}
+.wb-lead{max-width:700px;margin:24px auto 0;color:#6E6E73;line-height:1.9;font-size:15px}
+.wb-hero-img{width:100%;max-width:760px;margin:44px auto 0;border-radius:24px;box-shadow:0 24px 60px rgba(0,30,80,.14);border:1px solid rgba(255,255,255,.8);overflow:hidden}
+.wb-hero-img img{width:100%;height:auto;display:block}
+.wb-section{max-width:1100px;margin:0 auto;padding:110px 22px;position:relative}
+.wb-section.center{text-align:center}
+.wb-section h2{font-size:clamp(36px,7vw,64px);letter-spacing:-3px;line-height:1.1;margin:0 0 22px;color:#1D1D1F}
+.wb-section .wb-sub{color:#6E6E73;line-height:1.9;font-size:16px;max-width:760px;margin:0 auto}
+.wb-divider{width:64px;height:4px;border-radius:4px;background:linear-gradient(90deg,#0073FF,#31A8FE);margin:26px auto 0}
+/* 图文行 */
+.wb-row{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-top:60px}
+.wb-row.reverse .wb-media{order:2}
+.wb-row.reverse .wb-copy{order:1}
+.wb-media{border-radius:26px;overflow:hidden;box-shadow:0 18px 50px rgba(0,30,80,.12);border:1px solid rgba(255,255,255,.9);background:#fff}
+.wb-media img{width:100%;height:auto;display:block}
+.wb-copy h3{font-size:clamp(25px,5vw,38px);letter-spacing:-1px;margin:0 0 16px;color:#1D1D1F}
+.wb-copy p{font-size:15px;color:#6E6E73;line-height:1.9;max-width:none;margin:0 0 14px}
+.wb-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#0073FF;margin-bottom:14px;font-weight:600}
+.wb-tag:before{content:"";width:9px;height:9px;border-radius:50%;background:#0073FF}
+/* 特性色卡 */
+.wb-chip-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px}
+.wb-chip{background:#fff;border:1px solid #E6E8EA;border-radius:20px;padding:22px 18px;box-shadow:0 10px 30px rgba(0,30,80,.06)}
+.wb-chip strong{display:block;font-size:16px;margin-bottom:6px;color:#1D1D1F}
+.wb-chip span{font-size:13px;color:#86868B;line-height:1.6}
+/* 角色扮演卡 */
+.wb-role-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
+.wb-role{border-radius:22px;overflow:hidden;background:#fff;border:1px solid #E6E8EA;box-shadow:0 12px 34px rgba(0,30,80,.08)}
+.wb-role img{width:100%;height:auto;display:block}
+.wb-role .wb-role-cap{padding:16px 16px 18px;text-align:left}
+.wb-role .wb-role-cap h4{font-size:17px;margin:0 0 6px;color:#1D1D1F}
+.wb-role .wb-role-cap p{font-size:13px;color:#86868B;margin:0;line-height:1.6}
+/* 清单 */
+.wb-list{border-radius:26px;background:#fff;border:1px solid #E6E8EA;box-shadow:0 14px 40px rgba(0,30,80,.08);padding:40px 34px;text-align:left}
+.wb-list h3{font-size:22px;color:#1D1D1F;margin:0 0 18px}
+.wb-list ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+.wb-list li{font-size:15px;color:#3A3A3C;padding-left:24px;position:relative}
+.wb-list li:before{content:"";position:absolute;left:4px;top:8px;width:8px;height:8px;border-radius:50%;background:#0073FF}
+.wb-final{min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 22px}
+.wb-final h2{font-size:clamp(40px,8vw,76px);letter-spacing:-4px;line-height:1.05;margin:0 0 20px;color:#1D1D1F}
+.wb-note{max-width:620px;margin:auto;color:#86868B;font-size:12px;line-height:1.8}
+.wb-cta{display:inline-block;margin-top:22px;padding:13px 30px;border-radius:30px;background:#0073FF;color:#fff;font-size:15px;font-weight:600;text-decoration:none;box-shadow:0 10px 24px rgba(0,115,255,.28)}
+@media(max-width:680px){
+ .wb-row{grid-template-columns:1fr;gap:26px;margin-top:34px}
+ .wb-row.reverse .wb-media{order:0}
+ .wb-row.reverse .wb-copy{order:1}
+ .wb-chip-row{grid-template-columns:1fr 1fr}
+ .wb-role-grid{grid-template-columns:1fr 1fr}
+ .wb-list ul{grid-template-columns:1fr}
+ .wb-section{padding:90px 18px}
+}
 
 /* ========== 无隐创新内部核验（隐藏入口） ========== */
 .verify-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10050;align-items:center;justify-content:center;padding:20px}
@@ -521,9 +578,9 @@ textarea:focus, textarea:focus-visible {
     </div>
     <div id="verifyStepDone" style="display:none">
       <div class="verify-done-icon">✓</div>
-      <h3>你已通过核验!</h3>
+      <h3>你已通过核验，欢迎加入内测!</h3>
       <p class="verify-done-sub">感谢您的支持，<br>请将此页面截图发至群内。</p>
-      <div class="verify-done-note">「瞎玩主页」身份已确认</div>
+      <div class="verify-done-note">「瞎玩主页」内测成员身份已确认</div>
     </div>
     <button class="verify-close" id="verifyClose" onclick="closeVerify()">关闭</button>
   </div>
@@ -563,6 +620,11 @@ textarea:focus, textarea:focus-visible {
     <div class="zm-kicker">M SERIES</div>
     <h2>M系列</h2>
     <p>面向入门与编程启蒙的产品系列。</p>
+  </div>
+  <div class="zm-choice-card zm-wb-card" onclick="showPage('zhongming-other')">
+    <div class="zm-kicker">OTHERS</div>
+    <h2>其他</h2>
+    <p>更多独立产品与桌面机型，总有一款适合你。</p>
   </div>
 </div>
 <div class="zm-footnote">本页面为「瞎玩」制作的第三方产品介绍页面，仅用于产品信息展示。</div>
@@ -895,6 +957,129 @@ textarea:focus, textarea:focus-visible {
   <div class="reveal"><div class="m5-kicker">M5 · TIANSHU PROGRAMMING</div><h2>天枢编程</h2><p class="m5-note">以上介绍页面为「瞎玩」制作的第三方产品介绍，不代表中鸣官方页面。具体参数以中鸣官方公开资料为准。</p></div>
 </section>
 </div>
+
+<div id="page-zhongming-other" class="page page-zm">
+<button class="back-btn" onclick="showPage('zhongming')">← 返回</button>
+<section class="zm-hero" style="padding-top:62px">
+  <div class="zm-kicker">OTHERS</div>
+  <h1>其他</h1>
+  <p>中鸣产品体系中，还有更多独立机型与桌面方案。</p>
+</section>
+<div class="zm-choice" style="flex-direction:column;align-items:center;gap:16px">
+  <div class="zm-choice-card zm-wb-card" onclick="showPage('weibao')">
+    <div class="zm-kicker">JMC-NY-2495 · DESKTOP</div>
+    <h2>威宝机器人</h2>
+    <p>桌面式入门机器人，适合搭建、编程与互动启蒙。</p>
+  </div>
+</div>
+<div class="zm-footnote">本页面为「瞎玩」制作的第三方产品介绍页面，仅用于产品信息展示。</div>
+</div>
+
+<div id="page-weibao" class="page page-zm-wb">
+<button class="back-btn" onclick="showPage('zhongming-other')">← 返回</button>
+
+<section class="wb-hero">
+  <div class="wb-kicker reveal">JMC-NY-2495 · PROGRAMMING TOY</div>
+  <h1 class="wb-title reveal">威宝</h1>
+  <div class="wb-subtitle reveal">威宝机器人</div>
+  <p class="wb-lead reveal">趣味编程体验，专为 3-6 岁孩子设计！威宝是一款使用编程卡编程的幼儿编程机器人，在配套的地图上执行与互动，帮助孩子在游戏中学习编程基础，培养逻辑思维和创造力。</p>
+  <div class="wb-hero-img reveal"><img src="https://oss.zmrobo.com/zmrobo/static/products/JMC-NY-2495/images/1-1.png" alt="威宝机器人"></div>
+</section>
+
+<section class="wb-section center">
+  <div class="reveal">
+    <div class="wb-kicker">MEET WEIBAO</div>
+    <h2>编程的好玩伴，威宝陪你玩。</h2>
+    <p class="wb-sub">威宝造型圆润可爱、色彩鲜艳，体积小巧、重量轻便、续航时间长，配合易于理解的编程方式，是孩子身边最萌的编程玩伴。</p>
+  </div>
+  <div class="wb-chip-row">
+    <div class="wb-chip reveal"><strong>圆润可爱</strong><span>造型亲和，色彩鲜艳。</span></div>
+    <div class="wb-chip reveal"><strong>小巧轻便</strong><span>体积小巧，重量轻便。</span></div>
+    <div class="wb-chip reveal"><strong>续航持久</strong><span>续航时间长，陪伴更久。</span></div>
+    <div class="wb-chip reveal"><strong>易学易懂</strong><span>易于理解与实现的编程方式。</span></div>
+  </div>
+</section>
+
+<section class="wb-section">
+  <div class="reveal">
+    <div class="wb-kicker">CARD PROGRAMMING</div>
+    <h2>卡片编程系统。</h2>
+  </div>
+  <div class="wb-row reveal">
+    <div class="wb-media"><img src="https://oss.zmrobo.com/zmrobo/static/products/JMC-NY-2495/images/3-1.png" alt="卡片编程"></div>
+    <div class="wb-copy">
+      <span class="wb-tag">REAL OBJECT CODING</span>
+      <h3>实物编程卡，激发探索欲。</h3>
+      <p>应用卡片可设计组合超 1000+ 种编程程序！</p>
+      <p>7 种趣味任务卡与配套 13 种编程卡，锻炼孩子指向性思维与发散性思维，自由探索编程世界。</p>
+    </div>
+  </div>
+</section>
+
+<section class="wb-section">
+  <div class="reveal">
+    <div class="wb-kicker">ADVENTURE MAPS</div>
+    <h2>STEAM 成长体系。</h2>
+  </div>
+  <div class="wb-row reverse reveal">
+    <div class="wb-media"><img src="https://oss.zmrobo.com/zmrobo/static/products/JMC-NY-2495/images/4-1.png" alt="互动地图"></div>
+    <div class="wb-copy">
+      <span class="wb-tag">18 THEME MAPS</span>
+      <h3>主题冒险地图，多彩又有趣。</h3>
+      <p>寻宝探旅、宇宙探险、魔法之旅、虫虫伙伴等 18 个主题地图套装，4 个单元、每个单元 4 课，让编程学习变得多彩且富有挑战性。</p>
+      <p>案例活动手册以绘本形式，详解每个互动地图的要求与知识学习点，融合物理、环保、星际、艺术和数学等跨学科知识。</p>
+    </div>
+  </div>
+</section>
+
+<section class="wb-section">
+  <div class="reveal">
+    <div class="wb-kicker">VOICE &amp; EXPRESSIONS</div>
+    <h2>Q萌玩伴，声乐与表情。</h2>
+  </div>
+  <div class="wb-row reveal">
+    <div class="wb-media"><img src="https://oss.zmrobo.com/zmrobo/static/products/JMC-NY-2495/images/5-1.png" alt="声乐与表情"></div>
+    <div class="wb-copy">
+      <span class="wb-tag">ROLE PLAY</span>
+      <h3>声乐表情丰富，实时反馈。</h3>
+      <p>实时动作反馈、支持声乐，可显示笑脸、哭、搞怪等不同表情。下载移动端 APP，可开启更多功能模式，扮演多个角色。</p>
+    </div>
+  </div>
+  <div class="wb-role-grid">
+    <div class="wb-role reveal"><img src="https://oss.zmrobo.com/zmrobo/static/products/JMC-NY-2495/images/6-1.png" alt="遥控驾驶"><div class="wb-role-cap"><h4>遥控驾驶</h4><p>遥控驾驶，开启驾驶体验。</p></div></div>
+    <div class="wb-role reveal"><img src="https://oss.zmrobo.com/zmrobo/static/products/JMC-NY-2495/images/6-2.png" alt="编程家"><div class="wb-role-cap"><h4>编程家</h4><p>编程自主训练组合模块。</p></div></div>
+    <div class="wb-role reveal"><img src="https://oss.zmrobo.com/zmrobo/static/products/JMC-NY-2495/images/6-3.png" alt="线路规划师"><div class="wb-role-cap"><h4>线路规划师</h4><p>交通路线规划沙盘游戏。</p></div></div>
+    <div class="wb-role reveal"><img src="https://oss.zmrobo.com/zmrobo/static/products/JMC-NY-2495/images/6-4.png" alt="音乐家"><div class="wb-role-cap"><h4>音乐家</h4><p>钢琴模拟，编程编曲编辑。</p></div></div>
+  </div>
+</section>
+
+<section class="wb-section">
+  <div class="reveal">
+    <div class="wb-kicker">IN THE BOX</div>
+    <h2>产品清单</h2>
+  </div>
+  <div class="wb-row reveal">
+    <div class="wb-media"><img src="https://oss.zmrobo.com/zmrobo/static/products/JMC-NY-2495/images/7-1.png" alt="产品清单"></div>
+    <div class="wb-copy">
+      <div class="wb-list">
+        <h3>套装内容</h3>
+        <ul>
+          <li>威宝机器人 ×1</li>
+          <li>互动地图 ×9</li>
+          <li>编程卡 ×35</li>
+          <li>趣味任务卡 ×7</li>
+          <li>案例活动手册 ×1</li>
+          <li>说明书 ×1</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wb-final">
+  <div class="reveal"><div class="wb-kicker">WEIBAO ROBOT</div><h2>威宝机器人</h2><p class="wb-note">以上介绍页面为「瞎玩」制作的第三方产品介绍，不代表中鸣官方页面。图片与参数来源于中鸣官方网站公开信息。</p></div>
+</section>
+</div>
 <div id="page-hedian" class="page page-hedian">
 <button class="back-btn" onclick="showPage('home')">← 返回</button>
 <div class="reactor-wrap">
@@ -1020,7 +1205,7 @@ textarea:focus, textarea:focus-visible {
 <div class="about-glass-log" style="font-size:14px;color:#5c5c5e;line-height:1.7;text-align:left;position:relative;z-index:1;margin:16px 0 4px">
 <strong>更新日志</strong><br>
 v3.1:增加了 M5 与 M6 的介绍<br>
-v3.0:全面重构!
+v3.0:全面重构!并且增加了内测模式
 </div>
 <button class="about-close" onclick="closeAbout()">好的</button>
 </div>
@@ -1050,8 +1235,10 @@ function showPage(name) {
     else if (name === 'zhongming') target = document.getElementById('page-zhongming');
     else if (name === 'zhongming-e') target = document.getElementById('page-zhongming-e');
     else if (name === 'zhongming-m') target = document.getElementById('page-zhongming-m');
+    else if (name === 'zhongming-other') target = document.getElementById('page-zhongming-other');
     else if (name === 'm6') { target = document.getElementById('page-m6'); initM6Animations(); }
     else if (name === 'm5') { target = document.getElementById('page-m5'); initM5Animations(); }
+    else if (name === 'weibao') { target = document.getElementById('page-weibao'); initWeiBaoAnimations(); }
     else if (name === 'smart-storm') { target = document.getElementById('page-smart-storm'); initSmartStormAnimations(); }
     else if (name === 'e7') { target = document.getElementById('page-e7'); initE7Animations(); }
     else if (name === 'hedian') { target = document.getElementById('page-hedian'); setTimeout(initReactor, 100); }
@@ -1591,6 +1778,26 @@ function initM5Animations() {
     }, 30);
 }
 
+function initWeiBaoAnimations() {
+    var page = document.getElementById('page-weibao');
+    if (!page) return;
+    var items = page.querySelectorAll('.reveal');
+    items.forEach(function(el){ el.classList.remove('visible'); });
+    setTimeout(function(){
+        var observer = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {threshold:0.12});
+        items.forEach(function(el){ observer.observe(el); });
+        page.querySelectorAll('.reveal').forEach(function(el, i){
+            if (i < 4) setTimeout(function(){el.classList.add('visible');}, 120 + i*120);
+        });
+    }, 30);
+}
 
 // ========== 激活码机制 ==========
 var ACTIVATION_KEY = 'xw_activated';
