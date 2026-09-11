@@ -1319,7 +1319,7 @@ html[data-theme="dark"] .dji-download-note{color:#6e6e73}
 <div class="dji-download-area">
   <h2 style="font-size:28px;margin-bottom:12px">DJI 机库。</h2>
   <p style="color:#6e6e73;font-size:18px;margin-bottom:32px">你的无人机，都在这里。<br>现在，去飞吧。</p>
-  <a class="dji-download-btn" href="DJI-机库-1.0.apk" download="DJI-机库-1.0.apk" onclick="triggerDjiDownload(event)">立即下载</a>
+  <a class="dji-download-btn" href="DJI%20%E6%9C%BA%E5%BA%93_1.0.apk" download="DJI 机库_1.0.apk" onclick="triggerDjiDownload(event)">立即下载</a>
   <div class="dji-download-note">Android APK · 版本 1.0 · 约需 50MB 存储空间</div>
 </div>
 
@@ -1330,11 +1330,11 @@ html[data-theme="dark"] .dji-download-note{color:#6e6e73}
 <div class="about-glass" onclick="event.stopPropagation()">
 <h2>关于我们</h2>
 <p>Hello，我是瞎玩。感谢你来看我的个人主页。<br>这个项目目前被放置于 GitHub 托管，<br>你可以去给我点个 Star，谢谢。</p>
-<div class="about-ver">v3.4</div>
+<div class="about-ver">v3.3</div>
 <div class="about-glass-log" style="font-size:14px;color:#5c5c5e;line-height:1.7;text-align:left;position:relative;z-index:1;margin:16px 0 4px">
 <strong>更新日志</strong><br>
-v3.4增加DJI机库
-v3.3增加威宝和无隐创新<br>
+v3.3增加威宝和无隐创新
+v3.1:增加了 M5 与 M6 的介绍<br>
 </div>
 <button class="about-close" onclick="closeAbout()">好的</button>
 </div>
@@ -2112,15 +2112,56 @@ function initDjiScrollAnim(){
   items.forEach(function(el){ observer.observe(el); });
 }
 
-/* ===== DJI 机库下载兜底 ===== */
+/* ===== DJI 机库下载（fetch+blob 强制下载，兼容 GitHub Pages） ===== */
+var djiDownloading = false;
 function triggerDjiDownload(e){
   e.preventDefault();
-  var a = document.createElement('a');
-  a.href = 'DJI-机库-1.0.apk';
-  a.download = 'DJI-机库-1.0.apk';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  if(djiDownloading) return;
+  djiDownloading = true;
+  var btn = e.target;
+  var originalText = btn.textContent;
+  btn.textContent = '准备中...';
+  btn.style.opacity = '0.6';
+  btn.style.pointerEvents = 'none';
+  fetch('DJI%20%E6%9C%BA%E5%BA%93_1.0.apk')
+    .then(function(res){
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      return res.blob();
+    })
+    .then(function(blob){
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'DJI 机库_1.0.apk';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+      btn.textContent = '下载中...';
+      setTimeout(function(){
+        btn.textContent = originalText;
+        btn.style.opacity = '';
+        btn.style.pointerEvents = '';
+        djiDownloading = false;
+      }, 1500);
+    })
+    .catch(function(err){
+      console.error('DJI fetch failed, fallback to direct download:', err);
+      // 降级：直接跳转下载
+      var a = document.createElement('a');
+      a.href = 'DJI%20%E6%9C%BA%E5%BA%93_1.0.apk';
+      a.download = 'DJI 机库_1.0.apk';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      btn.textContent = '下载中...';
+      setTimeout(function(){
+        btn.textContent = originalText;
+        btn.style.opacity = '';
+        btn.style.pointerEvents = '';
+        djiDownloading = false;
+      }, 1500);
+    });
 }
 
 /* ===== 无隐创新入口（复用原激活弹窗） ===== */
